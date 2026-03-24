@@ -1,109 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trove Brand</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Treasure Trove — Brand Guidelines</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --F:'Archivo',sans-serif;
-  --T:'Trove Super Condensed',sans-serif;
-  --k:#0D1621;--w:#FFFFFF;--woff:.96;
-  --p1:#7D00FF;--p2:#5B2FD2;--p3:#442AA3;
-  --ext1:#FF6366;--ext2:#FCAB4D;--ext3:#6AC0D9;--ext4:#B5D968;
-  --ext5:#6BD968;--ext6:#E74C3C;--ext7:#10B981;--ext8:#3B82F6;
-  --f:#F3F0EA;--f-t:#E5DFD6;--n1:#D7D0C3;--n2:#9D959C;--n3:#6B6370;--n4:#464451;
-  --bd:rgba(0,0,0,.08);--muted:rgba(0,0,0,.4);--white:#FFFFFF;
-  --nw:280px;--th:56px;
+  --y:#FCCF00;--k:#131313;--ash:#EDE8E4;--white:#FFFCF9;
+  --egg:#F0E9E3;--bd:#E2DDD7;--muted:#888;
+  --nw:220px;--th:56px;
+  --T:'Anton','Arial Narrow',sans-serif;
+  --F:'Archivo',-apple-system,sans-serif;
 }
-*{margin:0;padding:0;box-sizing:border-box}
-body{font:400 15px/1.6 var(--F);color:var(--k);background:var(--w)}
-html,body{height:100%;width:100%}
+html,body{height:100%;font-family:var(--F);background:var(--white);color:var(--k);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
-/* LAYOUT */
-.topbar{position:fixed;top:0;left:var(--nw);right:0;height:var(--th);background:var(--w);border-bottom:1px solid var(--bd);z-index:90;display:flex;align-items:center;padding:0 24px}
-.topbar-logo{font:700 10px/1 var(--F);letter-spacing:1.8px;text-transform:uppercase;color:var(--k);opacity:.35}
-.sidebar{position:fixed;left:0;top:0;width:var(--nw);height:100vh;background:var(--w);border-right:1px solid var(--bd);padding-top:24px;overflow-y:auto;z-index:95}
-.nav{display:flex;flex-direction:column;gap:2px}
-.nav-item{font:600 12px/1 var(--F);padding:10px 16px;margin:0 8px;border-radius:4px;color:var(--muted);cursor:pointer;transition:all .15s;text-decoration:none}
-.nav-item:hover,.nav-item.active{background:rgba(0,0,0,.04);color:var(--k)}
-.main{margin-left:var(--nw);margin-top:var(--th)}
+/* PAGE TRANSITIONS */
+.page{display:none;opacity:0}
+.page.active{display:block;animation:fadeIn .3s ease forwards}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+/* TOPBAR */
+.topbar{position:fixed;top:0;left:0;right:0;height:var(--th);background:var(--white);border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;padding:0 28px 0 0;z-index:200}
+.tb-brand{display:flex;align-items:center;height:100%;width:var(--nw);padding:0 20px;border-right:1px solid var(--bd)}
+.tb-brand-logo{display:flex;align-items:center;gap:10px}
+.tb-brand-logo svg{height:26px;width:auto}
+.tb-brand-name{font:700 12px/1 var(--F);letter-spacing:1.5px;text-transform:uppercase;color:var(--k)}
+.tb-right{display:flex;align-items:center;gap:10px}
+.tag{font:600 11px/1 var(--F);color:var(--muted);padding:5px 12px;border:1px solid var(--bd);border-radius:3px}
+.ext-link{display:flex;align-items:center;gap:6px;font:600 12px/1 var(--F);color:var(--k);padding:6px 14px;border:1px solid var(--bd);border-radius:3px;text-decoration:none;transition:all .15s}
+.ext-link:hover{background:var(--k);color:var(--white);border-color:var(--k)}
+.ext-link svg{width:11px;height:11px}
+
+/* SIDEBAR */
+.sidebar{position:fixed;top:var(--th);left:0;width:var(--nw);height:calc(100vh - var(--th));background:var(--white);border-right:1px solid var(--bd);overflow-y:auto;z-index:100;display:flex;flex-direction:column;scrollbar-width:none}
+.sidebar::-webkit-scrollbar{display:none}
+.nb{flex:1;padding:12px 0 20px}
+.ng{font:700 9px/1 var(--F);letter-spacing:1.6px;text-transform:uppercase;color:#C5BFB8;padding:18px 20px 6px}
+.ng:first-child{padding-top:14px}
+.nbdr{border-top:1px solid var(--bd);margin:8px 0 0}
+.ni{position:relative}
+.nb-btn{display:flex;align-items:center;justify-content:space-between;width:100%;padding:7px 20px;font:500 13px/1.2 var(--F);color:#aaa;background:none;border:none;cursor:pointer;text-align:left;transition:color .1s}
+.nb-btn:hover,.nb-btn.active{color:var(--k)}
+.nb-btn.active{font-weight:700}
+.ni.open .nsub{display:block}
+.nsub{display:none;padding:2px 0 4px}
+.ns-btn{display:block;width:100%;padding:5px 20px 5px 32px;font:400 12px/1.4 var(--F);color:#bbb;background:none;border:none;cursor:pointer;text-align:left;transition:color .1s}
+.ns-btn:hover{color:var(--k)}
+.ns-btn.active{color:var(--k);font-weight:600}
+.sf{padding:14px 20px;border-top:1px solid var(--bd);font:400 11px/1 var(--F);color:#bbb}
+.sf a{color:inherit;text-decoration:none}
+.sf a:hover{color:var(--k)}
+
+/* MOBILE */
+.mob-topbar{display:none;position:fixed;top:0;left:0;right:0;height:var(--th);background:var(--white);border-bottom:1px solid var(--bd);z-index:300;align-items:center;justify-content:space-between;padding:0 20px}
+.mob-topbar-logo{display:flex;align-items:center;gap:8px}
+.mob-topbar-logo svg{height:22px}
+.mob-topbar-name{font:700 11px/1 var(--F);letter-spacing:1.5px;text-transform:uppercase;color:var(--k)}
+.hamburger{background:none;border:none;cursor:pointer;display:flex;flex-direction:column;gap:5px;padding:4px}
+.hamburger span{width:22px;height:2px;background:var(--k);display:block;border-radius:2px}
+.mob-menu{position:fixed;inset:0;background:var(--white);z-index:250;transform:translateX(-100%);transition:transform .3s cubic-bezier(.4,0,.2,1);overflow-y:auto;padding-top:var(--th)}
+.mob-menu.open{transform:translateX(0)}
+.mob-close{position:absolute;top:14px;right:20px;background:none;border:none;cursor:pointer;font:600 13px/1 var(--F);color:var(--muted)}
+
+/* MAIN */
+.main{margin-left:var(--nw);margin-top:var(--th);min-height:calc(100vh - var(--th))}
 
 /* HERO */
-.hero{padding:64px 64px 32px;background:var(--k);color:var(--w)}
-.hero h1{font:900 clamp(64px,12vw,120px)/var(--woff) var(--T);text-transform:uppercase;margin-bottom:16px}
-.hero h1 em{font-style:normal;color:transparent;-webkit-text-stroke:2px var(--w);opacity:.15}
-.hero p{font:400 16px/1.6 var(--F);color:rgba(255,255,255,.65);max-width:520px}
+.hero{padding:64px 64px 52px}
+.hero-lbl{font:700 10px/1 var(--F);letter-spacing:2px;text-transform:uppercase;color:#C5BFB8;margin-bottom:18px;display:block}
+.hero h1{font:900 96px/.93 var(--T);text-transform:uppercase;color:var(--k)}
+.hero h1 em{font-style:normal;color:transparent;-webkit-text-stroke:2px var(--k);opacity:.2}
+.hero-desc{margin-top:22px;font:400 14px/1.7 var(--F);color:#888;max-width:500px}
 
-/* SECTION HEADERS */
-.sec-row{padding:28px 64px 12px;display:flex;align-items:center;gap:16px}
-.sec-label{font:700 10px/1 var(--F);letter-spacing:1.8px;text-transform:uppercase;color:var(--muted)}
-.sec-title{font:700 20px/1.2 var(--F);text-transform:uppercase;color:var(--k)}
+/* SEC ROW */
+.sec-row{display:flex;align-items:baseline;justify-content:space-between;padding:28px 64px 16px}
+.sec-lbl{font:700 10px/1 var(--F);letter-spacing:1.8px;text-transform:uppercase;color:#C5BFB8}
 
-/* LOGO SECTION */
-.logo-body{padding:32px 64px 48px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.lp{border:1.5px solid var(--bd);border-radius:8px;overflow:hidden;min-height:240px;display:flex;align-items:center;justify-content:center;background:var(--f);cursor:pointer;transition:border-color .15s,box-shadow .15s}
-.lp:hover{border-color:var(--k);box-shadow:0 8px 24px rgba(0,0,0,.08)}
-.lp img{max-width:90%;max-height:90%;object-fit:contain}
+/* LOGO GRID */
+.logo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:0 64px 56px}
+.logo-card{border:1px solid var(--bd);border-radius:8px;overflow:hidden;display:flex;flex-direction:column}
+.lp{display:flex;align-items:center;justify-content:center;padding:40px;min-height:210px}
+.lp.dk{background:var(--k)}
+.lp.wh{background:#fff}
+.lp.ash-bg{background:var(--ash)}
+.lp img{max-width:85%;max-height:68px;object-fit:contain;display:block}
+.lp.sym img{width:84px;height:84px;max-width:84px;max-height:84px;object-fit:contain}
+.lm{padding:20px 22px 24px;border-top:1px solid var(--bd)}
+.lm h4{font:700 13px/1.3 var(--F);color:var(--k);margin-bottom:4px}
+.lm p{font:400 12px/1.5 var(--F);color:var(--muted);margin-bottom:14px}
+.dl-row{display:flex;gap:6px}
+.dl-pill{font:800 10px/1 var(--F);letter-spacing:.8px;text-transform:uppercase;padding:7px 14px;border:1.5px solid var(--bd);border-radius:2px;background:transparent;cursor:pointer;color:var(--muted);transition:all .15s;text-decoration:none;display:inline-block}
+.dl-pill:hover{background:var(--k);border-color:var(--k);color:var(--white)}
 
-/* DO'S & DON'Ts */
-.donts-grid{padding:0 64px 40px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.do-item{border:1.5px solid var(--k);border-radius:8px;overflow:hidden;aspect-ratio:1}
-.do-item.no{border-color:var(--ext1)}
-.do-item img{width:100%;height:100%;object-fit:cover}
+/* SAFE ZONE */
+.sz-wrap{padding:0 64px 56px}
+.sz-box{border:1px solid var(--bd);border-radius:8px;padding:64px;display:flex;flex-direction:column;align-items:center;gap:36px}
+.sz-diagram{position:relative;display:inline-flex;align-items:center;justify-content:center;padding:48px}
+.sz-inner{border:1.5px dashed var(--bd);border-radius:3px;padding:36px 60px;display:inline-flex;align-items:center;justify-content:center;position:relative}
+.sz-inner img{height:44px;display:block}
+.sz-tick{position:absolute;font:800 9px/1 var(--F);letter-spacing:1px;text-transform:uppercase;color:var(--muted);background:var(--white);padding:0 6px;white-space:nowrap}
+.sz-tick.t{top:-8px;left:50%;transform:translateX(-50%)}
+.sz-tick.b{bottom:-8px;left:50%;transform:translateX(-50%)}
+.sz-tick.l{left:-12px;top:50%;transform:translateY(-50%) rotate(-90deg)}
+.sz-tick.r{right:-12px;top:50%;transform:translateY(-50%) rotate(90deg)}
+.sz-note{font:400 13px/1.65 var(--F);color:var(--muted);text-align:center;max-width:420px}
+.sz-note strong{color:var(--k)}
 
-/* COLOR SECTION */
-.color-body{padding:32px 64px 48px}
-.color-grid{display:grid;grid-template-columns:1fr;gap:24px}
+/* DONTS */
+.donts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:0 64px 56px}
+.dont-card{border:1px solid var(--bd);border-radius:8px;overflow:hidden;display:flex;flex-direction:column}
+.dont-preview{min-height:180px;display:flex;align-items:center;justify-content:center;padding:32px;position:relative}
+.dont-x{position:absolute;top:12px;left:12px;line-height:0}
+.dont-x svg{width:22px;height:22px;display:block}
+.dont-preview img{max-width:78%;max-height:52px;object-fit:contain}
+.dont-meta{padding:16px 20px 22px;border-top:1px solid var(--bd)}
+.dont-meta h5{font:700 13px/1.3 var(--F);color:var(--k);margin-bottom:4px}
+.dont-meta p{font:400 12px/1.55 var(--F);color:var(--muted)}
 
-/* Swatches */
-.sw-primary{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:32px}
-.swatch{position:relative;aspect-ratio:1;border-radius:6px;cursor:pointer;overflow:hidden;transition:transform .15s}
-.swatch:hover{transform:scale(1.02)}
-.swatch-color{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
-.sw-ov{position:absolute;inset:0;background:rgba(0,0,0,.8);opacity:0;transition:opacity .15s;display:flex;align-items:center;justify-content:center;color:var(--w);font:600 11px/1.2 var(--F);text-align:center;padding:8px}
-.swatch:hover .sw-ov,
-.swatch.active .sw-ov{opacity:1}
+/* COLOR */
+.color-body{padding:0 64px 64px}
+.pal-section{margin-bottom:36px}
+.pal-lbl{font:700 9px/1 var(--F);letter-spacing:1.8px;text-transform:uppercase;color:#C5BFB8;margin-bottom:12px;display:block}
 
-.sw-extended{display:grid;grid-template-columns:repeat(8,1fr);gap:12px;margin-bottom:32px}
-.sw-ext-item{position:relative;aspect-ratio:1;border-radius:6px;cursor:pointer;overflow:hidden;transition:transform .15s}
-.sw-ext-item:hover{transform:scale(1.02)}
-.sw-ext-item .sw-ext-ov{position:absolute;inset:0;background:rgba(0,0,0,.8);opacity:0;transition:opacity .15s;display:flex;align-items:center;justify-content:center;color:var(--w);font:600 10px/1.1 var(--F);text-align:center;padding:6px}
-.sw-ext-item:hover .sw-ext-ov,
-.sw-ext-item.active .sw-ext-ov{opacity:1}
+/* Primary swatches */
+.sw-primary{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.sw-primary .swatch{border:1px solid var(--bd);border-radius:8px;overflow:hidden;cursor:pointer;transition:transform .15s,box-shadow .15s}
+.sw-primary .swatch:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.sw-primary .sw-color{height:100px;position:relative}
+.sw-primary .sw-ov{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .15s;background:rgba(0,0,0,.1)}
+.sw-primary .swatch:hover .sw-ov{opacity:1}
+.sw-primary .sw-ov span{font:800 9px/1 var(--F);letter-spacing:.5px;text-transform:uppercase;color:#fff;background:rgba(0,0,0,.4);padding:4px 10px;border-radius:20px}
+.sw-primary .sw-info{padding:12px 14px 14px;border-top:1px solid var(--bd)}
+.sw-primary .sw-name{font:700 13px/1.3 var(--F);color:var(--k);margin-bottom:3px}
+.sw-primary .sw-hex{font:500 12px/1 var(--F);color:var(--muted);margin-bottom:2px}
+.sw-primary .sw-sub{font:400 10px/1.4 var(--F);color:#bbb}
 
-.sw-neutrals{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.sw-foil{position:relative;aspect-ratio:1;border-radius:6px;cursor:pointer;overflow:hidden;border:1px solid var(--bd);transition:transform .15s}
-.sw-foil:hover{transform:scale(1.02)}
-.sw-foil-ov{position:absolute;inset:0;background:rgba(0,0,0,.8);opacity:0;transition:opacity .15s;display:flex;align-items:center;justify-content:center;color:var(--w);font:600 11px/1.2 var(--F);text-align:center;padding:8px}
-.sw-foil:hover .sw-foil-ov,
-.sw-foil.active .sw-foil-ov{opacity:1}
+/* Extended swatches */
+.sw-extended{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;align-items:start}
+.sw-ext-item{border:1px solid var(--bd);border-radius:6px;overflow:hidden;cursor:pointer;transition:transform .15s,box-shadow .15s}
+.sw-ext-item:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.08)}
+.sw-ext-color{position:relative;width:100%;padding-top:100%}
+.sw-ext-ov{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .15s;background:rgba(0,0,0,.1)}
+.sw-ext-item:hover .sw-ext-ov{opacity:1}
+.sw-ext-ov span{font:800 8px/1 var(--F);letter-spacing:.3px;text-transform:uppercase;color:#fff;background:rgba(0,0,0,.4);padding:3px 7px;border-radius:20px}
+.sw-ext-info{padding:7px 8px 9px;border-top:1px solid var(--bd)}
+.sw-ext-name{font:700 10px/1.2 var(--F);color:var(--k);margin-bottom:2px}
+.sw-ext-hex{font:500 10px/1 var(--F);color:var(--muted)}
 
-.sw-neutral{position:relative;aspect-ratio:1;border-radius:6px;cursor:pointer;overflow:hidden;border:1px solid var(--bd);transition:transform .15s}
-.sw-neutral:hover{transform:scale(1.02)}
-.sw-n-ov{position:absolute;inset:0;background:rgba(0,0,0,.8);opacity:0;transition:opacity .15s;display:flex;align-items:center;justify-content:center;color:var(--w);font:600 11px/1.2 var(--F);text-align:center;padding:8px}
-.sw-neutral:hover .sw-n-ov,
-.sw-neutral.active .sw-n-ov{opacity:1}
+/* Foil swatch */
+.sw-foil{border:1px solid var(--bd);border-radius:6px;overflow:hidden;cursor:pointer;transition:transform .15s,box-shadow .15s}
+.sw-foil:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.08)}
+.sw-foil-color{position:relative;width:100%;padding-top:100%;background:linear-gradient(135deg,#F0D39D 0%,#FDEED2 30%,#DBC29B 65%,#A88043 100%)}
+.sw-foil-ov{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .15s;background:rgba(0,0,0,.06)}
+.sw-foil:hover .sw-foil-ov{opacity:1}
+.sw-foil-ov span{font:800 8px/1 var(--F);letter-spacing:.3px;text-transform:uppercase;color:var(--k);background:rgba(255,255,255,.7);padding:3px 7px;border-radius:20px}
+.sw-foil-info{padding:7px 8px 9px;border-top:1px solid var(--bd)}
+.sw-foil-name{font:700 10px/1.2 var(--F);color:var(--k);margin-bottom:2px}
+.sw-foil-hex{font:500 10px/1 var(--F);color:var(--muted)}
 
-/* TYPOGRAPHY SECTION */
-.type-body{padding:32px 64px 48px}
-.type-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.tc{border:1.5px solid var(--bd);border-radius:8px;overflow:hidden;background:var(--w);transition:border-color .15s,box-shadow .15s}
-.tc:hover{border-color:var(--k);box-shadow:0 8px 24px rgba(0,0,0,.08)}
-.tc-thumb{min-height:280px;position:relative;overflow:hidden;background:#f5f5f5}
-.tc-thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.tc-thumb-inner{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;padding:24px;background:linear-gradient(to top,rgba(0,0,0,.5),transparent);color:var(--w)}
-.tc-label{font:600 13px/1.2 var(--F);text-shadow:0 2px 8px rgba(0,0,0,.3);text-align:center;margin-bottom:4px}
-.tc-meta{padding:16px 18px 20px;border-top:1px solid var(--bd);background:var(--w)}
-.tc-name{font:700 13px/1.3 var(--F);color:var(--k);margin-bottom:8px}
-.tc-desc{font:400 11.5px/1.5 var(--F);color:var(--muted);margin-bottom:12px}
-.tc-dl{font:600 12px/1 var(--F);padding:8px 12px;border:1.5px solid var(--bd);border-radius:3px;background:transparent;color:var(--muted);cursor:pointer;transition:all .15s}
-.tc-dl:hover{background:var(--k);border-color:var(--k);color:var(--w)}
+/* Neutrals */
+.sw-neutrals{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.sw-neutral{border:1px solid var(--bd);border-radius:6px;overflow:hidden;cursor:pointer;transition:transform .15s,box-shadow .15s}
+.sw-neutral:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.08)}
+.sw-n-color{position:relative;width:100%;padding-top:85%}
+.sw-n-ov{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .15s;background:rgba(0,0,0,.1)}
+.sw-neutral:hover .sw-n-ov{opacity:1}
+.sw-n-ov span{font:800 8px/1 var(--F);text-transform:uppercase;color:#fff;background:rgba(0,0,0,.4);padding:3px 7px;border-radius:20px}
+.sw-n-info{padding:7px 8px 9px;border-top:1px solid var(--bd)}
+.sw-n-name{font:700 10px/1.2 var(--F);color:var(--k);margin-bottom:2px}
+.sw-n-hex{font:500 10px/1 var(--F);color:var(--muted)}
 
-/* MOTION & ICONOGRAPHY (WIP) */
+/* TOAST */
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);background:var(--k);color:var(--white);font:700 12px/1 var(--F);padding:10px 20px;border-radius:4px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:999}
+.toast.show{opacity:1}
+
+/* TYPOGRAPHY */
+.type-body{padding:0 64px 64px}
+.type-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.type-card{border:1px solid var(--bd);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;transition:transform .15s,box-shadow .15s}
+.type-card:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.tc-thumb{position:relative;width:100%;padding-top:100%;overflow:hidden}
+.tc-thumb-inner{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:22px}
+.tc-fname{font:700 11px/1 var(--F);letter-spacing:.5px;text-transform:uppercase;align-self:flex-start;padding:5px 10px;border-radius:3px}
+.tc-fname.on-dark{color:rgba(255,255,255,.5);background:rgba(255,255,255,.08)}
+.tc-fname.on-light{color:rgba(0,0,0,.35);background:rgba(0,0,0,.05)}
+.tc-specimen{position:absolute;left:22px;right:22px;top:50%;transform:translateY(-60%)}
+.tc-usecase{font:600 10px/1.4 var(--F);letter-spacing:.3px;text-transform:uppercase;align-self:flex-start;padding:4px 0}
+.tc-usecase.on-dark{color:rgba(255,255,255,.4)}
+.tc-usecase.on-light{color:rgba(0,0,0,.3)}
+.trove-spec{font-family:var(--T);font-size:64px;font-weight:900;line-height:.88;text-transform:uppercase;color:#fff;display:block}
+.trove-spec-outline{font-family:var(--T);font-size:64px;font-weight:900;line-height:.88;text-transform:uppercase;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.3);display:block}
+.anton-spec{font-family:'Anton',sans-serif;font-size:80px;font-weight:400;text-transform:uppercase;line-height:.88;color:var(--k);display:block}
+.archivo-spec{display:flex;flex-direction:column;gap:5px;width:100%}
+.aw{display:flex;align-items:baseline;gap:8px}
+.aw-w{font:700 8px/1 var(--F);letter-spacing:.5px;text-transform:uppercase;color:rgba(0,0,0,.25);min-width:24px;flex-shrink:0}
+.aw-t{font:14px/1.3 var(--F);color:var(--k)}
+.tc-meta{padding:16px 18px 20px;border-top:1px solid var(--bd);background:var(--white)}
+.tc-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:5px}
+.tc-name{font:700 13px/1.3 var(--F);color:var(--k)}
+.tc-desc{font:400 11.5px/1.5 var(--F);color:var(--muted)}
+
+/* WIP */
 .wip{min-height:calc(100vh - var(--th));display:flex;align-items:center;padding:64px}
 .wip-i{max-width:480px}
 .wip-chip{display:inline-block;font:700 10px/1 var(--F);letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);border:1.5px solid var(--bd);padding:5px 14px;border-radius:3px;margin-bottom:28px}
@@ -124,17 +225,18 @@ html,body{height:100%;width:100%}
 .plat-name{font:700 14px/1 var(--F);color:var(--k)}
 .plat-btns{display:flex;gap:8px;flex-wrap:wrap}
 .plat-btn{font:600 12px/1 var(--F);padding:9px 20px;border:1.5px solid var(--bd);border-radius:3px;background:transparent;color:var(--muted);cursor:pointer;transition:all .15s;white-space:nowrap}
-.plat-btn:hover{background:var(--k);border-color:var(--k);color:var(--w)}
+.plat-btn:hover{background:var(--k);border-color:var(--k);color:var(--white)}
 
-/* MOBILE */
+/* RESPONSIVE */
 @media(max-width:768px){
   :root{--nw:0px;--th:52px}
   .topbar,.sidebar{display:none}
-  .main{margin-left:0;margin-top:0}
+  .mob-topbar{display:flex}
+  .main{margin-left:0;margin-top:var(--th)}
   .hero{padding:40px 24px 36px}
   .hero h1{font-size:clamp(48px,12vw,80px)}
   .sec-row{padding:20px 24px 12px}
-  .logo-body{grid-template-columns:1fr;gap:12px;padding:0 24px 40px}
+  .logo-grid{grid-template-columns:1fr;gap:12px;padding:0 24px 40px}
   .lp{min-height:180px}
   .donts-grid{grid-template-columns:1fr 1fr;gap:10px;padding:0 24px 40px}
   .color-body{padding:0 24px 48px}
@@ -147,274 +249,597 @@ html,body{height:100%;width:100%}
   .wip-i h1{font-size:60px}
   .plat-body{padding:12px 24px 40px}
   .plat-row{flex-direction:column;align-items:flex-start;gap:12px}
+  .sz-wrap{padding:0 24px 40px}
+  .sz-box{padding:32px 20px}
 }
-  </style>
+</style>
 </head>
 <body>
 
-<div class="sidebar">
-  <nav class="nav">
-    <a class="nav-item active" onclick="showSection('logo')">Logo</a>
-    <a class="nav-item" onclick="showSection('color')">Color</a>
-    <a class="nav-item" onclick="showSection('type')">Typography</a>
-    <a class="nav-item" onclick="showSection('motion')">Motion</a>
-    <a class="nav-item" onclick="showSection('icons')">Iconography</a>
-    <a class="nav-item" onclick="showSection('photo')">Photography</a>
-    <a class="nav-item" onclick="showSection('assets')">Assets</a>
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="tb-brand">
+    <div class="tb-brand-logo">
+      <svg viewBox="0 0 130 206" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M9.93 95.98S7.28 135.22 12.96 148.58C18.64 161.94 29.45 172.81 29.45 172.81V80.8H0L9.93 95.98Z" fill="#131313"/>
+        <path d="M100.96 80.8V172.81C100.96 172.81 111.77 161.94 117.44 148.58C123.12 135.22 120.47 95.98 120.47 95.98L130.41 80.8H100.96Z" fill="#131313"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M70.98 0L75.41 6.93L70.75 16.56V30.71H130.41V70.78H121.01C121.02 70.65 121.26 52.15 106.99 50.74H78.85V60.9H99.91V73.41H90.19V184.54L65.2 205.61L40.22 184.54V73.41H30.49V60.9H51.55V50.74H23.42C9.17 52.13 9.39 70.66 9.39 70.78H0V30.71H59.63V16.56L54.98 6.93L59.4 0H70.98ZM60.19 181.37L65.04 186.52L70.21 181.37V73.41H60.19V181.37Z" fill="#131313"/>
+      </svg>
+      <span class="tb-brand-name">Treasure Trove</span>
+    </div>
+  </div>
+  <div class="tb-right">
+    <span class="tag">Brand Guidelines v1.0</span>
+    <a href="https://treasuretrove.com" target="_blank" class="ext-link">
+      treasuretrove.com
+      <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2H2.5a1 1 0 00-1 1v6a1 1 0 001 1h6a1 1 0 001-1V7.5"/><path d="M7 1.5h3.5V5"/><line x1="10.5" y1="1.5" x2="5.5" y2="6.5"/></svg>
+    </a>
+  </div>
+</header>
+
+<!-- MOBILE TOPBAR -->
+<header class="mob-topbar" id="mob-topbar">
+  <div class="mob-topbar-logo">
+    <svg viewBox="0 0 130 206" fill="none" xmlns="http://www.w3.org/2000/svg" style="height:22px">
+      <path d="M9.93 95.98S7.28 135.22 12.96 148.58C18.64 161.94 29.45 172.81 29.45 172.81V80.8H0L9.93 95.98Z" fill="#131313"/>
+      <path d="M100.96 80.8V172.81C100.96 172.81 111.77 161.94 117.44 148.58C123.12 135.22 120.47 95.98 120.47 95.98L130.41 80.8H100.96Z" fill="#131313"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M70.98 0L75.41 6.93L70.75 16.56V30.71H130.41V70.78H121.01C121.02 70.65 121.26 52.15 106.99 50.74H78.85V60.9H99.91V73.41H90.19V184.54L65.2 205.61L40.22 184.54V73.41H30.49V60.9H51.55V50.74H23.42C9.17 52.13 9.39 70.66 9.39 70.78H0V30.71H59.63V16.56L54.98 6.93L59.4 0H70.98ZM60.19 181.37L65.04 186.52L70.21 181.37V73.41H60.19V181.37Z" fill="#131313"/>
+    </svg>
+    <span class="mob-topbar-name">Treasure Trove</span>
+  </div>
+  <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</header>
+<div class="mob-menu" id="mob-menu">
+  <button class="mob-close" onclick="toggleMenu()">✕ Close</button>
+  <nav class="nb">
+    <div class="ng">Foundations</div>
+    <div class="ni open" id="mni-logo">
+      <button class="nb-btn" onclick="tog('mni-logo')"><span>Logo</span></button>
+      <div class="nsub">
+        <button class="ns-btn" onclick="sp('p-primary');toggleMenu()">Primary Logo</button>
+        <button class="ns-btn" onclick="sp('p-secondary');toggleMenu()">Stacked Logo</button>
+        <button class="ns-btn" onclick="sp('p-symbol');toggleMenu()">Symbol</button>
+        <button class="ns-btn" onclick="sp('p-safezone');toggleMenu()">Safe Zone</button>
+        <button class="ns-btn" onclick="sp('p-donts');toggleMenu()">Logo Don'ts</button>
+      </div>
+    </div>
+    <div class="ni"><button class="nb-btn" onclick="sp('p-color');toggleMenu()"><span>Color</span></button></div>
+    <div class="ni"><button class="nb-btn" onclick="sp('p-type');toggleMenu()"><span>Typography</span></button></div>
+    <div class="ni"><button class="nb-btn" onclick="sp('p-motion');toggleMenu()"><span>Motion</span></button></div>
+    <div class="ni"><button class="nb-btn" onclick="sp('p-icon');toggleMenu()"><span>Iconography</span></button></div>
+    <div class="nbdr"></div>
+    <div class="ng">Expressions</div>
+    <div class="ni"><button class="nb-btn" onclick="sp('p-photo');toggleMenu()"><span>Photography</span></button></div>
+    <div class="nbdr"></div>
+    <div class="ng">Resources</div>
+    <div class="ni"><button class="nb-btn" onclick="sp('p-assets');toggleMenu()"><span>Assets</span></button></div>
+    <div class="ni"><button class="nb-btn" onclick="sp('p-templates');toggleMenu()"><span>Templates</span></button></div>
   </nav>
 </div>
 
-<div class="topbar">
-  <div class="topbar-logo">Trove Brand</div>
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <nav class="nb">
+    <div class="ng">Foundations</div>
+    <div class="ni open" id="ni-logo">
+      <button class="nb-btn active" onclick="tog('ni-logo');sp('p-primary')">
+        <span>Logo</span>
+      </button>
+      <div class="nsub">
+        <button class="ns-btn active" onclick="sp('p-primary');sa(this)">Primary Logo</button>
+        <button class="ns-btn" onclick="sp('p-secondary');sa(this)">Stacked Logo</button>
+        <button class="ns-btn" onclick="sp('p-symbol');sa(this)">Symbol</button>
+        <button class="ns-btn" onclick="sp('p-safezone');sa(this)">Safe Zone</button>
+        <button class="ns-btn" onclick="sp('p-donts');sa(this)">Logo Don'ts</button>
+      </div>
+    </div>
+    <div class="ni"><button class="nb-btn" onclick="sp('p-color');closeAll()"><span>Color</span></button></div>
+    <div class="ni"><button class="nb-btn" onclick="sp('p-type');closeAll()"><span>Typography</span></button></div>
+    <div class="ni"><button class="nb-btn" onclick="sp('p-motion');closeAll()"><span>Motion</span></button></div>
+    <div class="ni"><button class="nb-btn" onclick="sp('p-icon');closeAll()"><span>Iconography</span></button></div>
+    <div class="nbdr"></div>
+    <div class="ng">Expressions</div>
+    <div class="ni"><button class="nb-btn" onclick="sp('p-photo');closeAll()"><span>Photography</span></button></div>
+    <div class="nbdr"></div>
+    <div class="ng">Resources</div>
+    <div class="ni"><button class="nb-btn" onclick="sp('p-assets');closeAll()"><span>Assets</span></button></div>
+    <div class="ni"><button class="nb-btn" onclick="sp('p-templates');closeAll()"><span>Templates</span></button></div>
+  </nav>
+  <div class="sf"><a href="https://brand.treasuretrove.com">brand.treasuretrove.com</a></div>
+</aside>
+
+<main class="main">
+
+<!-- PRIMARY LOGO -->
+<div id="p-primary" class="page active">
+  <div class="hero">
+    <span class="hero-lbl">Foundation · Logo</span>
+    <h1>Primary <em>Logo</em></h1>
+    <p class="hero-desc">The primary lockup pairs the icon with the wordmark in a single horizontal arrangement. This is the default form — use it whenever space and composition allow.</p>
+  </div>
+  <div class="sec-row"><span class="sec-lbl">Color Variants</span></div>
+  <div class="logo-grid">
+    <div class="logo-card">
+      <div class="lp wh">
+        <svg viewBox="0 0 865 206" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width:85%;max-height:68px">
+          <path d="M9.93 95.97S7.28 135.22 12.96 148.58C18.64 161.94 29.45 172.81 29.45 172.81V80.8H0L9.93 95.97Z" fill="#0E0E0E"/>
+          <path d="M100.96 80.8V172.81C100.96 172.81 111.77 161.94 117.44 148.58C123.12 135.22 120.47 95.97 120.47 95.97L130.41 80.8H100.96Z" fill="#0E0E0E"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M70.98 0L75.41 6.93L70.75 16.56V30.71H130.41V70.78H121.01C121.02 70.65 121.26 52.15 106.99 50.74H78.85V60.9H99.91V73.41H90.19V184.54L65.2 205.61L40.22 184.54V73.41H30.49V60.9H51.55V50.74H23.42C9.17 52.13 9.39 70.66 9.39 70.78H0V30.71H59.63V16.56L54.98 6.93L59.4 0H70.98ZM60.19 181.37L65.04 186.52L70.21 181.37V73.41H60.19V181.37Z" fill="#0E0E0E"/>
+          <path d="M223.27 42.83V60.27H214.86C213.2 60.27 211.86 61.61 211.86 63.27V181.3H194.63V63.27C194.63 61.61 193.28 60.27 191.63 60.27H183V42.83H223.27Z" fill="#0E0E0E"/>
+          <path d="M285.25 181.3H268.02L254.32 129.4H250.59V181.3H233.36V42.83H256.4C259.58 42.83 262.56 43.45 265.33 44.7C268.09 45.94 270.52 47.61 272.59 49.68C274.67 51.76 276.33 54.18 277.57 56.95C278.82 59.71 279.44 62.69 279.44 65.87V106.36C279.44 110.09 278.61 113.55 276.95 116.74C275.43 119.78 273.28 122.41 270.52 124.62L285.25 181.3ZM262.21 65.87C262.21 64.35 261.59 63.04 260.34 61.93C259.24 60.82 257.92 60.27 256.4 60.27H250.59V112.17H256.61C258.13 112.03 259.44 111.41 260.55 110.3C261.66 109.19 262.21 107.88 262.21 106.36V65.87Z" fill="#0E0E0E"/>
+          <path d="M310.82 60.27V103.45H322.44V120.68H310.82V164.07H322.44V181.3H293.59V42.83H322.44V60.27H310.82Z" fill="#0E0E0E"/>
+          <path d="M384.09 181.3H366.86L364.58 164.07H351.71L349.42 181.3H332.19L349.42 42.83H366.86L384.09 181.3ZM362.5 146.63L358.14 112.17L353.78 146.63H362.5Z" fill="#0E0E0E"/>
+          <path d="M493.72 42.83V159.29C493.72 162.48 493.1 165.45 491.85 168.22C490.74 170.99 489.15 173.41 487.08 175.49C485 177.56 482.51 179.22 479.6 180.47C476.83 181.71 473.86 182.34 470.68 182.34C467.49 182.34 464.52 181.71 461.75 180.47C458.98 179.22 456.56 177.56 454.48 175.49C452.41 173.41 450.75 170.99 449.5 168.22C448.26 165.45 447.63 162.48 447.63 159.29V42.83H464.86V159.29C464.86 160.81 465.42 162.13 466.52 163.24C467.77 164.34 469.15 164.9 470.68 164.9C472.2 164.9 473.51 164.34 474.62 163.24C475.87 162.13 476.49 160.81 476.49 159.29V42.83H493.72Z" fill="#0E0E0E"/>
+          <path d="M558.54 181.3H541.31L527.6 129.4H523.87V181.3H506.64V42.83H529.68C532.86 42.83 535.84 43.45 538.61 44.7C541.37 45.94 543.8 47.61 545.87 49.68C547.95 51.76 549.61 54.18 550.85 56.95C552.1 59.71 552.72 62.69 552.72 65.87V106.36C552.72 110.09 551.89 113.55 550.23 116.74C548.71 119.78 546.56 122.41 543.8 124.62L558.54 181.3ZM535.49 65.87C535.49 64.35 534.87 63.04 533.62 61.93C532.52 60.82 531.2 60.27 529.68 60.27H523.87V112.17H529.89C531.41 112.03 532.72 111.41 533.83 110.3C534.94 109.19 535.49 107.88 535.49 106.36V65.87Z" fill="#0E0E0E"/>
+          <path d="M584.1 60.27V103.45H595.72V120.68H584.1V164.07H595.72V181.3H566.87V42.83H595.72V60.27H584.1Z" fill="#0E0E0E"/>
+          <path d="M749.98 42C753.17 42 756.14 42.62 758.91 43.87C761.82 44.98 764.31 46.57 766.38 48.64C768.46 50.72 770.05 53.21 771.16 56.12C772.4 58.88 773.03 61.86 773.03 65.04V159.29C773.03 162.48 772.4 165.45 771.16 168.22C770.05 170.99 768.46 173.41 766.38 175.49C764.31 177.56 761.82 179.22 758.91 180.47C756.14 181.71 753.17 182.34 749.98 182.34C746.8 182.34 743.83 181.71 741.06 180.47C738.29 179.22 735.87 177.56 733.79 175.49C731.72 173.41 730.06 170.99 728.81 168.22C727.56 165.45 726.94 162.48 726.94 159.29V65.04C726.94 61.86 727.56 58.88 728.81 56.12C730.06 53.21 731.72 50.72 733.79 48.64C735.87 46.57 738.29 44.98 741.06 43.87C743.83 42.62 746.8 42 749.98 42ZM755.8 65.04C755.8 63.38 755.17 62 753.93 60.89C752.82 59.78 751.51 59.23 749.98 59.23C748.46 59.23 747.08 59.78 745.83 60.89C744.73 62 744.17 63.38 744.17 65.04V159.29C744.17 160.81 744.73 162.13 745.83 163.24C747.08 164.34 748.46 164.9 749.98 164.9C751.51 164.9 752.82 164.34 753.93 163.24C755.17 162.13 755.8 160.81 755.8 159.29V65.04Z" fill="#0E0E0E"/>
+          <path d="M825.27 42.83L810.95 181.3H793.51L779.19 42.83H796.42L802.23 112.17L808.04 42.83H825.27Z" fill="#0E0E0E"/>
+          <path d="M852.69 60.27V103.45H864.32V120.68H852.69V164.07H864.32V181.3H835.46V42.83H864.32V60.27H852.69Z" fill="#0E0E0E"/>
+          <path d="M664.27 42.83V60.27H655.86C654.2 60.27 652.86 61.61 652.86 63.27V181.3H635.63V63.27C635.63 61.61 634.28 60.27 632.63 60.27H624V42.83H664.27Z" fill="#0E0E0E"/>
+        </svg>
+      </div>
+      <div class="lm">
+        <h4>Light Background</h4>
+        <p>On Ash, Cloud, Pearl or any light surface.</p>
+        <div class="dl-row">
+          <a class="dl-pill" href="https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/logo-horiz.svg" download>SVG</a>
+          <a class="dl-pill" href="https://github.com/efikabak/ttbrand/raw/main/assets/logos.zip" download>PNG</a>
+        </div>
+      </div>
+    </div>
+    <div class="logo-card">
+      <div class="lp dk">
+        <svg viewBox="0 0 865 206" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width:85%;max-height:68px">
+          <path d="M9.93 95.97S7.28 135.22 12.96 148.58C18.64 161.94 29.45 172.81 29.45 172.81V80.8H0L9.93 95.97Z" fill="#EDE8E4"/>
+          <path d="M100.96 80.8V172.81C100.96 172.81 111.77 161.94 117.44 148.58C123.12 135.22 120.47 95.97 120.47 95.97L130.41 80.8H100.96Z" fill="#EDE8E4"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M70.98 0L75.41 6.93L70.75 16.56V30.71H130.41V70.78H121.01C121.02 70.65 121.26 52.15 106.99 50.74H78.85V60.9H99.91V73.41H90.19V184.54L65.2 205.61L40.22 184.54V73.41H30.49V60.9H51.55V50.74H23.42C9.17 52.13 9.39 70.66 9.39 70.78H0V30.71H59.63V16.56L54.98 6.93L59.4 0H70.98ZM60.19 181.37L65.04 186.52L70.21 181.37V73.41H60.19V181.37Z" fill="#EDE8E4"/>
+          <path d="M223.27 42.83V60.27H214.86C213.2 60.27 211.86 61.61 211.86 63.27V181.3H194.63V63.27C194.63 61.61 193.28 60.27 191.63 60.27H183V42.83H223.27Z" fill="#EDE8E4"/>
+          <path d="M285.25 181.3H268.02L254.32 129.4H250.59V181.3H233.36V42.83H256.4C259.58 42.83 262.56 43.45 265.33 44.7C268.09 45.94 270.52 47.61 272.59 49.68C274.67 51.76 276.33 54.18 277.57 56.95C278.82 59.71 279.44 62.69 279.44 65.87V106.36C279.44 110.09 278.61 113.55 276.95 116.74C275.43 119.78 273.28 122.41 270.52 124.62L285.25 181.3ZM262.21 65.87C262.21 64.35 261.59 63.04 260.34 61.93C259.24 60.82 257.92 60.27 256.4 60.27H250.59V112.17H256.61C258.13 112.03 259.44 111.41 260.55 110.3C261.66 109.19 262.21 107.88 262.21 106.36V65.87Z" fill="#EDE8E4"/>
+          <path d="M310.82 60.27V103.45H322.44V120.68H310.82V164.07H322.44V181.3H293.59V42.83H322.44V60.27H310.82Z" fill="#EDE8E4"/>
+          <path d="M384.09 181.3H366.86L364.58 164.07H351.71L349.42 181.3H332.19L349.42 42.83H366.86L384.09 181.3ZM362.5 146.63L358.14 112.17L353.78 146.63H362.5Z" fill="#EDE8E4"/>
+          <path d="M493.72 42.83V159.29C493.72 162.48 493.1 165.45 491.85 168.22C490.74 170.99 489.15 173.41 487.08 175.49C485 177.56 482.51 179.22 479.6 180.47C476.83 181.71 473.86 182.34 470.68 182.34C467.49 182.34 464.52 181.71 461.75 180.47C458.98 179.22 456.56 177.56 454.48 175.49C452.41 173.41 450.75 170.99 449.5 168.22C448.26 165.45 447.63 162.48 447.63 159.29V42.83H464.86V159.29C464.86 160.81 465.42 162.13 466.52 163.24C467.77 164.34 469.15 164.9 470.68 164.9C472.2 164.9 473.51 164.34 474.62 163.24C475.87 162.13 476.49 160.81 476.49 159.29V42.83H493.72Z" fill="#EDE8E4"/>
+          <path d="M558.54 181.3H541.31L527.6 129.4H523.87V181.3H506.64V42.83H529.68C532.86 42.83 535.84 43.45 538.61 44.7C541.37 45.94 543.8 47.61 545.87 49.68C547.95 51.76 549.61 54.18 550.85 56.95C552.1 59.71 552.72 62.69 552.72 65.87V106.36C552.72 110.09 551.89 113.55 550.23 116.74C548.71 119.78 546.56 122.41 543.8 124.62L558.54 181.3ZM535.49 65.87C535.49 64.35 534.87 63.04 533.62 61.93C532.52 60.82 531.2 60.27 529.68 60.27H523.87V112.17H529.89C531.41 112.03 532.72 111.41 533.83 110.3C534.94 109.19 535.49 107.88 535.49 106.36V65.87Z" fill="#EDE8E4"/>
+          <path d="M584.1 60.27V103.45H595.72V120.68H584.1V164.07H595.72V181.3H566.87V42.83H595.72V60.27H584.1Z" fill="#EDE8E4"/>
+          <path d="M749.98 42C753.17 42 756.14 42.62 758.91 43.87C761.82 44.98 764.31 46.57 766.38 48.64C768.46 50.72 770.05 53.21 771.16 56.12C772.4 58.88 773.03 61.86 773.03 65.04V159.29C773.03 162.48 772.4 165.45 771.16 168.22C770.05 170.99 768.46 173.41 766.38 175.49C764.31 177.56 761.82 179.22 758.91 180.47C756.14 181.71 753.17 182.34 749.98 182.34C746.8 182.34 743.83 181.71 741.06 180.47C738.29 179.22 735.87 177.56 733.79 175.49C731.72 173.41 730.06 170.99 728.81 168.22C727.56 165.45 726.94 162.48 726.94 159.29V65.04C726.94 61.86 727.56 58.88 728.81 56.12C730.06 53.21 731.72 50.72 733.79 48.64C735.87 46.57 738.29 44.98 741.06 43.87C743.83 42.62 746.8 42 749.98 42ZM755.8 65.04C755.8 63.38 755.17 62 753.93 60.89C752.82 59.78 751.51 59.23 749.98 59.23C748.46 59.23 747.08 59.78 745.83 60.89C744.73 62 744.17 63.38 744.17 65.04V159.29C744.17 160.81 744.73 162.13 745.83 163.24C747.08 164.34 748.46 164.9 749.98 164.9C751.51 164.9 752.82 164.34 753.93 163.24C755.17 162.13 755.8 160.81 755.8 159.29V65.04Z" fill="#EDE8E4"/>
+          <path d="M825.27 42.83L810.95 181.3H793.51L779.19 42.83H796.42L802.23 112.17L808.04 42.83H825.27Z" fill="#EDE8E4"/>
+          <path d="M852.69 60.27V103.45H864.32V120.68H852.69V164.07H864.32V181.3H835.46V42.83H864.32V60.27H852.69Z" fill="#EDE8E4"/>
+          <path d="M664.27 42.83V60.27H655.86C654.2 60.27 652.86 61.61 652.86 63.27V181.3H635.63V63.27C635.63 61.61 634.28 60.27 632.63 60.27H624V42.83H664.27Z" fill="#EDE8E4"/>
+        </svg>
+      </div>
+      <div class="lm">
+        <h4>Dark Background</h4>
+        <p>Default. On Obsidian or any dark surface.</p>
+        <div class="dl-row">
+          <a class="dl-pill" href="https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/logo-horiz.svg" download>SVG</a>
+          <a class="dl-pill" href="https://github.com/efikabak/ttbrand/raw/main/assets/logos.zip" download>PNG</a>
+        </div>
+      </div>
+    </div>
+    <div class="logo-card">
+      <div class="lp dk">
+        <svg viewBox="0 0 865 206" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width:85%;max-height:68px">
+          <path d="M9.93 95.97S7.28 135.22 12.96 148.58C18.64 161.94 29.45 172.81 29.45 172.81V80.8H0L9.93 95.97Z" fill="#FCCF00"/>
+          <path d="M100.96 80.8V172.81C100.96 172.81 111.77 161.94 117.44 148.58C123.12 135.22 120.47 95.97 120.47 95.97L130.41 80.8H100.96Z" fill="#FCCF00"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M70.98 0L75.41 6.93L70.75 16.56V30.71H130.41V70.78H121.01C121.02 70.65 121.26 52.15 106.99 50.74H78.85V60.9H99.91V73.41H90.19V184.54L65.2 205.61L40.22 184.54V73.41H30.49V60.9H51.55V50.74H23.42C9.17 52.13 9.39 70.66 9.39 70.78H0V30.71H59.63V16.56L54.98 6.93L59.4 0H70.98ZM60.19 181.37L65.04 186.52L70.21 181.37V73.41H60.19V181.37Z" fill="#FCCF00"/>
+          <path d="M223.27 42.83V60.27H214.86C213.2 60.27 211.86 61.61 211.86 63.27V181.3H194.63V63.27C194.63 61.61 193.28 60.27 191.63 60.27H183V42.83H223.27Z" fill="#FCCF00"/>
+          <path d="M285.25 181.3H268.02L254.32 129.4H250.59V181.3H233.36V42.83H256.4C259.58 42.83 262.56 43.45 265.33 44.7C268.09 45.94 270.52 47.61 272.59 49.68C274.67 51.76 276.33 54.18 277.57 56.95C278.82 59.71 279.44 62.69 279.44 65.87V106.36C279.44 110.09 278.61 113.55 276.95 116.74C275.43 119.78 273.28 122.41 270.52 124.62L285.25 181.3ZM262.21 65.87C262.21 64.35 261.59 63.04 260.34 61.93C259.24 60.82 257.92 60.27 256.4 60.27H250.59V112.17H256.61C258.13 112.03 259.44 111.41 260.55 110.3C261.66 109.19 262.21 107.88 262.21 106.36V65.87Z" fill="#FCCF00"/>
+          <path d="M310.82 60.27V103.45H322.44V120.68H310.82V164.07H322.44V181.3H293.59V42.83H322.44V60.27H310.82Z" fill="#FCCF00"/>
+          <path d="M384.09 181.3H366.86L364.58 164.07H351.71L349.42 181.3H332.19L349.42 42.83H366.86L384.09 181.3ZM362.5 146.63L358.14 112.17L353.78 146.63H362.5Z" fill="#FCCF00"/>
+          <path d="M493.72 42.83V159.29C493.72 162.48 493.1 165.45 491.85 168.22C490.74 170.99 489.15 173.41 487.08 175.49C485 177.56 482.51 179.22 479.6 180.47C476.83 181.71 473.86 182.34 470.68 182.34C467.49 182.34 464.52 181.71 461.75 180.47C458.98 179.22 456.56 177.56 454.48 175.49C452.41 173.41 450.75 170.99 449.5 168.22C448.26 165.45 447.63 162.48 447.63 159.29V42.83H464.86V159.29C464.86 160.81 465.42 162.13 466.52 163.24C467.77 164.34 469.15 164.9 470.68 164.9C472.2 164.9 473.51 164.34 474.62 163.24C475.87 162.13 476.49 160.81 476.49 159.29V42.83H493.72Z" fill="#FCCF00"/>
+          <path d="M558.54 181.3H541.31L527.6 129.4H523.87V181.3H506.64V42.83H529.68C532.86 42.83 535.84 43.45 538.61 44.7C541.37 45.94 543.8 47.61 545.87 49.68C547.95 51.76 549.61 54.18 550.85 56.95C552.1 59.71 552.72 62.69 552.72 65.87V106.36C552.72 110.09 551.89 113.55 550.23 116.74C548.71 119.78 546.56 122.41 543.8 124.62L558.54 181.3ZM535.49 65.87C535.49 64.35 534.87 63.04 533.62 61.93C532.52 60.82 531.2 60.27 529.68 60.27H523.87V112.17H529.89C531.41 112.03 532.72 111.41 533.83 110.3C534.94 109.19 535.49 107.88 535.49 106.36V65.87Z" fill="#FCCF00"/>
+          <path d="M584.1 60.27V103.45H595.72V120.68H584.1V164.07H595.72V181.3H566.87V42.83H595.72V60.27H584.1Z" fill="#FCCF00"/>
+          <path d="M749.98 42C753.17 42 756.14 42.62 758.91 43.87C761.82 44.98 764.31 46.57 766.38 48.64C768.46 50.72 770.05 53.21 771.16 56.12C772.4 58.88 773.03 61.86 773.03 65.04V159.29C773.03 162.48 772.4 165.45 771.16 168.22C770.05 170.99 768.46 173.41 766.38 175.49C764.31 177.56 761.82 179.22 758.91 180.47C756.14 181.71 753.17 182.34 749.98 182.34C746.8 182.34 743.83 181.71 741.06 180.47C738.29 179.22 735.87 177.56 733.79 175.49C731.72 173.41 730.06 170.99 728.81 168.22C727.56 165.45 726.94 162.48 726.94 159.29V65.04C726.94 61.86 727.56 58.88 728.81 56.12C730.06 53.21 731.72 50.72 733.79 48.64C735.87 46.57 738.29 44.98 741.06 43.87C743.83 42.62 746.8 42 749.98 42ZM755.8 65.04C755.8 63.38 755.17 62 753.93 60.89C752.82 59.78 751.51 59.23 749.98 59.23C748.46 59.23 747.08 59.78 745.83 60.89C744.73 62 744.17 63.38 744.17 65.04V159.29C744.17 160.81 744.73 162.13 745.83 163.24C747.08 164.34 748.46 164.9 749.98 164.9C751.51 164.9 752.82 164.34 753.93 163.24C755.17 162.13 755.8 160.81 755.8 159.29V65.04Z" fill="#FCCF00"/>
+          <path d="M825.27 42.83L810.95 181.3H793.51L779.19 42.83H796.42L802.23 112.17L808.04 42.83H825.27Z" fill="#FCCF00"/>
+          <path d="M852.69 60.27V103.45H864.32V120.68H852.69V164.07H864.32V181.3H835.46V42.83H864.32V60.27H852.69Z" fill="#FCCF00"/>
+          <path d="M664.27 42.83V60.27H655.86C654.2 60.27 652.86 61.61 652.86 63.27V181.3H635.63V63.27C635.63 61.61 634.28 60.27 632.63 60.27H624V42.83H664.27Z" fill="#FCCF00"/>
+        </svg>
+      </div>
+      <div class="lm">
+        <h4>Golden Yellow</h4>
+        <p>Reserved — use with intention on dark backgrounds.</p>
+        <div class="dl-row">
+          <a class="dl-pill" href="https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/logo-horiz.svg" download>SVG</a>
+          <a class="dl-pill" href="https://github.com/efikabak/ttbrand/raw/main/assets/logos.zip" download>PNG</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="main">
-
-<!-- HERO -->
-<div class="hero">
-  <h1>Trove<em>Brand</em></h1>
-  <p>The comprehensive visual identity system for Treasure Trove. Every element designed with intention, crafted for clarity, and optimized for impact across all media.</p>
+<!-- STACKED LOGO -->
+<div id="p-secondary" class="page">
+  <div class="hero">
+    <span class="hero-lbl">Foundation · Logo</span>
+    <h1>Stacked <em>Logo</em></h1>
+    <p class="hero-desc">The stacked lockup is vertical-friendly. Use only when the primary cannot fit the composition without compromising legibility.</p>
+  </div>
+  <div class="sec-row"><span class="sec-lbl">Color Variants</span></div>
+  <div class="logo-grid">
+    <div class="logo-card">
+      <div class="lp wh"><img src="https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/logo-vert.svg" alt="Stacked Light"/></div>
+      <div class="lm"><h4>Light Background</h4><p>On Ash, Cloud, Pearl or any light surface.</p><div class="dl-row"><a class="dl-pill" href="https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/logo-vert.svg" download>SVG</a><a class="dl-pill" href="https://github.com/efikabak/ttbrand/raw/main/assets/logos.zip" download>PNG</a></div></div>
+    </div>
+    <div class="logo-card">
+      <div class="lp dk"><img src="https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/logo-vert.svg" alt="Stacked Dark" style="filter:invert(1)"/></div>
+      <div class="lm"><h4>Dark Background</h4><p>On Obsidian or any dark surface.</p><div class="dl-row"><a class="dl-pill" href="https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/logo-vert.svg" download>SVG</a><a class="dl-pill" href="https://github.com/efikabak/ttbrand/raw/main/assets/logos.zip" download>PNG</a></div></div>
+    </div>
+    <div class="logo-card">
+      <div class="lp dk"><img src="https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/logo-vert.svg" alt="Stacked Yellow" style="filter:invert(1) sepia(1) saturate(5) hue-rotate(5deg)"/></div>
+      <div class="lm"><h4>Golden Yellow</h4><p>Reserved — use with intention on dark backgrounds.</p><div class="dl-row"><a class="dl-pill" href="https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/logo-vert.svg" download>SVG</a><a class="dl-pill" href="https://github.com/efikabak/ttbrand/raw/main/assets/logos.zip" download>PNG</a></div></div>
+    </div>
+  </div>
 </div>
 
-<!-- LOGO SECTION -->
-<section id="logo">
-  <div class="sec-row">
-    <div class="sec-label">Foundations</div>
-    <div class="sec-title">Logo</div>
+<!-- SYMBOL -->
+<div id="p-symbol" class="page">
+  <div class="hero">
+    <span class="hero-lbl">Foundation · Logo</span>
+    <h1>Symbol</h1>
+    <p class="hero-desc">The standalone mark for contexts where the brand name is established — app icons, favicons, social avatars, compact placements. Never use smaller than 24px.</p>
   </div>
-  <div class="logo-body">
-    <div class="lp" style="background:var(--k)"><img src="https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/logo-mark.svg" alt="Mark"></div>
-    <div class="lp" style="background:var(--f)"><img src="https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/logo-horiz.svg" alt="Horizontal"></div>
-    <div class="lp" style="background:var(--f)"><img src="https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/logo-vert.svg" alt="Vertical"></div>
+  <div class="sec-row"><span class="sec-lbl">Color Variants</span></div>
+  <div class="logo-grid">
+    <div class="logo-card">
+      <div class="lp wh sym"><img src="https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/logo-mark.svg" alt="Symbol Light"/></div>
+      <div class="lm"><h4>Light Background</h4><p>On Ash, Cloud, Pearl or any light surface.</p><div class="dl-row"><a class="dl-pill" href="https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/logo-mark.svg" download>SVG</a><a class="dl-pill" href="https://github.com/efikabak/ttbrand/raw/main/assets/logos.zip" download>PNG</a></div></div>
+    </div>
+    <div class="logo-card">
+      <div class="lp dk sym"><img src="https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/logo-mark.svg" alt="Symbol Dark" style="filter:invert(1)"/></div>
+      <div class="lm"><h4>Dark Background</h4><p>On Obsidian or any dark surface.</p><div class="dl-row"><a class="dl-pill" href="https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/logo-mark.svg" download>SVG</a><a class="dl-pill" href="https://github.com/efikabak/ttbrand/raw/main/assets/logos.zip" download>PNG</a></div></div>
+    </div>
+    <div class="logo-card">
+      <div class="lp dk sym"><img src="https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/logo-mark.svg" alt="Symbol Yellow" style="filter:invert(1) sepia(1) saturate(5) hue-rotate(5deg)"/></div>
+      <div class="lm"><h4>Golden Yellow</h4><p>Reserved — use with intention.</p><div class="dl-row"><a class="dl-pill" href="https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/logo-mark.svg" download>SVG</a><a class="dl-pill" href="https://github.com/efikabak/ttbrand/raw/main/assets/logos.zip" download>PNG</a></div></div>
+    </div>
   </div>
-  <div class="sec-row" style="padding-top:12px">
-    <div class="sec-label">Guidelines</div>
-    <div class="sec-title">Do's & Don'ts</div>
+</div>
+
+<!-- SAFE ZONE -->
+<div id="p-safezone" class="page">
+  <div class="hero">
+    <span class="hero-lbl">Foundation · Logo</span>
+    <h1>Safe <em>Zone</em></h1>
+    <p class="hero-desc">To protect the logo from other visual elements, it must be surrounded by a minimum amount of clear space at all times.</p>
   </div>
+  <div class="sz-wrap">
+    <div class="sz-box">
+      <div style="text-align:center">
+        <div style="font:700 10px/1 var(--F);letter-spacing:1.6px;text-transform:uppercase;color:#C5BFB8;margin-bottom:24px">Minimum Clear Space</div>
+        <div class="sz-diagram">
+          <div class="sz-inner">
+            <span class="sz-tick t">½ X</span>
+            <span class="sz-tick b">½ X</span>
+            <span class="sz-tick l">½ X</span>
+            <span class="sz-tick r">½ X</span>
+            <img src="https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/logo-mark.svg" alt="Symbol"/>
+          </div>
+        </div>
+      </div>
+      <p class="sz-note">The safe zone on all four sides equals <strong>½ X</strong>, where X is the full width of the symbol icon. No typography, imagery, or graphic elements may enter this space.</p>
+    </div>
+  </div>
+</div>
+
+<!-- LOGO DON'TS -->
+<div id="p-donts" class="page">
+  <div class="hero">
+    <span class="hero-lbl">Foundation · Logo</span>
+    <h1>Logo <em>Don'ts</em></h1>
+    <p class="hero-desc">Our mark has been built with precision. Any distortion, alteration, or misuse weakens what it stands for.</p>
+  </div>
+  <div class="sec-row"><span class="sec-lbl">Incorrect Usage</span></div>
   <div class="donts-grid">
-    <div class="do-item"><img src="https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/dont-1.png" alt="Do"></div>
-    <div class="do-item"><img src="https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/dont-2.png" alt="Don't" style="border-color:var(--ext1)"></div>
-    <div class="do-item"><img src="https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/dont-3.png" alt="Do"></div>
-    <div class="do-item"><img src="https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/dont-4.png" alt="Don't" style="border-color:var(--ext1)"></div>
+    <div class="dont-card">
+      <div class="dont-preview" style="background:#f5f5f5">
+        <div class="dont-x"><svg viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="10" stroke="#FF4444" stroke-width="1.5"/><path d="M7 7l8 8M15 7l-8 8" stroke="#FF4444" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <img src="https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/logo-mark.svg" style="transform:scaleX(1.6)" alt="Distorted"/>
+      </div>
+      <div class="dont-meta"><h5>Do not distort</h5><p>Never stretch, squash, or alter proportions.</p></div>
+    </div>
+    <div class="dont-card">
+      <div class="dont-preview" style="background:#f5f5f5">
+        <div class="dont-x"><svg viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="10" stroke="#FF4444" stroke-width="1.5"/><path d="M7 7l8 8M15 7l-8 8" stroke="#FF4444" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <img src="https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/logo-mark.svg" style="filter:drop-shadow(4px 4px 8px rgba(0,0,0,.5))" alt="Shadow"/>
+      </div>
+      <div class="dont-meta"><h5>Do not add effects</h5><p>No drop shadows, glows, outlines, or gradients.</p></div>
+    </div>
+    <div class="dont-card">
+      <div class="dont-preview" style="background:#f5f5f5">
+        <div class="dont-x"><svg viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="10" stroke="#FF4444" stroke-width="1.5"/><path d="M7 7l8 8M15 7l-8 8" stroke="#FF4444" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <img src="https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/logo-mark.svg" style="filter:hue-rotate(120deg) saturate(3)" alt="Wrong color"/>
+      </div>
+      <div class="dont-meta"><h5>Do not alter colors</h5><p>Only use approved color variants. Never recolor arbitrarily.</p></div>
+    </div>
+    <div class="dont-card">
+      <div class="dont-preview" style="background:repeating-linear-gradient(45deg,#eee,#eee 5px,#fff 5px,#fff 10px)">
+        <div class="dont-x"><svg viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="10" stroke="#FF4444" stroke-width="1.5"/><path d="M7 7l8 8M15 7l-8 8" stroke="#FF4444" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <img src="https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/logo-mark.svg" alt="Pattern"/>
+      </div>
+      <div class="dont-meta"><h5>Do not use on patterns</h5><p>Always place on a clean, solid-color background.</p></div>
+    </div>
+    <div class="dont-card">
+      <div class="dont-preview" style="background:#f5f5f5">
+        <div class="dont-x"><svg viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="10" stroke="#FF4444" stroke-width="1.5"/><path d="M7 7l8 8M15 7l-8 8" stroke="#FF4444" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <img src="https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/logo-mark.svg" style="width:20px;height:20px;max-width:20px;max-height:20px" alt="Too small"/>
+      </div>
+      <div class="dont-meta"><h5>Do not resize the icon</h5><p>The icon and wordmark must stay in fixed proportion.</p></div>
+    </div>
+    <div class="dont-card">
+      <div class="dont-preview" style="background:url('https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/dont-2.png') center/cover;filter:brightness(.8)">
+        <div class="dont-x"><svg viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="10" stroke="#FF4444" stroke-width="1.5"/><path d="M7 7l8 8M15 7l-8 8" stroke="#FF4444" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+      </div>
+      <div class="dont-meta"><h5>Do not use on busy imagery</h5><p>Ensure sufficient contrast and clear space at all times.</p></div>
+    </div>
   </div>
-</section>
+</div>
 
-<!-- COLOR SECTION -->
-<section id="color">
-  <div class="sec-row">
-    <div class="sec-label">Foundations</div>
-    <div class="sec-title">Color</div>
+<!-- COLOR -->
+<div id="p-color" class="page">
+  <div class="hero">
+    <span class="hero-lbl">Foundation · Color</span>
+    <h1>Color <em>Palette</em></h1>
+    <p class="hero-desc">Color is used with restraint and intention. Each color exists for a reason. Click any swatch to copy the hex value.</p>
   </div>
   <div class="color-body">
-    <div style="margin-bottom:24px">
-      <div style="font:600 12px/1 var(--F);color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Primary</div>
+    <div class="pal-section">
+      <span class="pal-lbl">Primary</span>
       <div class="sw-primary">
-        <div class="swatch"><div class="swatch-color" style="background:var(--p1)"></div><div class="sw-ov">#7D00FF</div></div>
-        <div class="swatch"><div class="swatch-color" style="background:var(--p2)"></div><div class="sw-ov">#5B2FD2</div></div>
-        <div class="swatch"><div class="swatch-color" style="background:var(--p3)"></div><div class="sw-ov">#442AA3</div></div>
-        <div class="swatch"><div class="swatch-color" style="background:var(--k)"></div><div class="sw-ov">#0D1621</div></div>
-        <div class="swatch"><div class="swatch-color" style="background:var(--w);border:1px solid var(--bd)"></div><div class="sw-ov">#FFFFFF</div></div>
+        <div class="swatch" onclick="copyHex('#131313')">
+          <div class="sw-color" style="background:#131313"><div class="sw-ov"><span>Copy</span></div></div>
+          <div class="sw-info"><div class="sw-name">Obsidian</div><div class="sw-hex">#131313</div><div class="sw-sub">R19 G19 B19 · C0 M0 Y0 K93</div></div>
+        </div>
+        <div class="swatch" onclick="copyHex('#EDE8E4')">
+          <div class="sw-color" style="background:#EDE8E4"><div class="sw-ov"><span>Copy</span></div></div>
+          <div class="sw-info"><div class="sw-name">Ash</div><div class="sw-hex">#EDE8E4</div><div class="sw-sub">R237 G232 B228 · C0 M2 Y4 K7</div></div>
+        </div>
+        <div class="swatch" onclick="copyHex('#FCCF00')">
+          <div class="sw-color" style="background:#FCCF00"><div class="sw-ov"><span>Copy</span></div></div>
+          <div class="sw-info"><div class="sw-name">Golden Yellow</div><div class="sw-hex">#FCCF00</div><div class="sw-sub">R252 G207 B0 · C0 M18 Y100 K1</div></div>
+        </div>
       </div>
     </div>
-    <div style="margin-bottom:24px">
-      <div style="font:600 12px/1 var(--F);color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Extended</div>
+    <div class="pal-section">
+      <span class="pal-lbl">Extended</span>
       <div class="sw-extended">
-        <div class="sw-ext-item"><div style="width:100%;height:100%;background:var(--ext1)"></div><div class="sw-ext-ov">#FF6366</div></div>
-        <div class="sw-ext-item"><div style="width:100%;height:100%;background:var(--ext2)"></div><div class="sw-ext-ov">#FCAB4D</div></div>
-        <div class="sw-ext-item"><div style="width:100%;height:100%;background:var(--ext3)"></div><div class="sw-ext-ov">#6AC0D9</div></div>
-        <div class="sw-ext-item"><div style="width:100%;height:100%;background:var(--ext4)"></div><div class="sw-ext-ov">#B5D968</div></div>
-        <div class="sw-ext-item"><div style="width:100%;height:100%;background:var(--ext5)"></div><div class="sw-ext-ov">#6BD968</div></div>
-        <div class="sw-ext-item"><div style="width:100%;height:100%;background:var(--ext6)"></div><div class="sw-ext-ov">#E74C3C</div></div>
-        <div class="sw-ext-item"><div style="width:100%;height:100%;background:var(--ext7)"></div><div class="sw-ext-ov">#10B981</div></div>
-        <div class="sw-ext-item"><div style="width:100%;height:100%;background:var(--ext8)"></div><div class="sw-ext-ov">#3B82F6</div></div>
+        <div class="sw-ext-item" onclick="copyHex('#001F47')"><div class="sw-ext-color" style="background:#001F47"><div class="sw-ext-ov"><span>Copy</span></div></div><div class="sw-ext-info"><div class="sw-ext-name">Navy</div><div class="sw-ext-hex">#001F47</div></div></div>
+        <div class="sw-ext-item" onclick="copyHex('#642D00')"><div class="sw-ext-color" style="background:#642D00"><div class="sw-ext-ov"><span>Copy</span></div></div><div class="sw-ext-info"><div class="sw-ext-name">Bronze</div><div class="sw-ext-hex">#642D00</div></div></div>
+        <div class="sw-ext-item" onclick="copyHex('#2A6400')"><div class="sw-ext-color" style="background:#2A6400"><div class="sw-ext-ov"><span>Copy</span></div></div><div class="sw-ext-info"><div class="sw-ext-name">Forest</div><div class="sw-ext-hex">#2A6400</div></div></div>
+        <div class="sw-ext-item" onclick="copyHex('#8A55F8')"><div class="sw-ext-color" style="background:#8A55F8"><div class="sw-ext-ov"><span>Copy</span></div></div><div class="sw-ext-info"><div class="sw-ext-name">Violet</div><div class="sw-ext-hex">#8A55F8</div></div></div>
+        <div class="sw-ext-item" onclick="copyHex('#FC5400')"><div class="sw-ext-color" style="background:#FC5400"><div class="sw-ext-ov"><span>Copy</span></div></div><div class="sw-ext-info"><div class="sw-ext-name">Blaze</div><div class="sw-ext-hex">#FC5400</div></div></div>
+        <div class="sw-ext-item" onclick="copyHex('#BCE0A2')"><div class="sw-ext-color" style="background:#BCE0A2"><div class="sw-ext-ov"><span>Copy</span></div></div><div class="sw-ext-info"><div class="sw-ext-name">Emerald</div><div class="sw-ext-hex">#BCE0A2</div></div></div>
+        <div class="sw-foil" onclick="dlFoilPNG()"><div class="sw-foil-color"><div class="sw-foil-ov"><span>↓ PNG</span></div></div><div class="sw-foil-info"><div class="sw-foil-name">Gold Foil</div><div class="sw-foil-hex">Gradient</div></div></div>
       </div>
     </div>
-    <div>
-      <div style="font:600 12px/1 var(--F);color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Neutrals</div>
+    <div class="pal-section">
+      <span class="pal-lbl">Neutrals</span>
       <div class="sw-neutrals">
-        <div class="sw-foil"><div style="width:100%;height:100%;background:var(--f)"></div><div class="sw-foil-ov">#F3F0EA</div></div>
-        <div class="sw-neutral"><div style="width:100%;height:100%;background:var(--n1)"></div><div class="sw-n-ov">#D7D0C3</div></div>
-        <div class="sw-neutral"><div style="width:100%;height:100%;background:var(--n2)"></div><div class="sw-n-ov">#9D959C</div></div>
-        <div class="sw-neutral"><div style="width:100%;height:100%;background:var(--n3)"></div><div class="sw-n-ov">#6B6370</div></div>
+        <div class="sw-neutral" onclick="copyHex('#FFFCF9')"><div class="sw-n-color" style="background:#FFFCF9;border:1px solid #E2DDD7"><div class="sw-n-ov"><span>Copy</span></div></div><div class="sw-n-info"><div class="sw-n-name">Cloud</div><div class="sw-n-hex">#FFFCF9</div></div></div>
+        <div class="sw-neutral" onclick="copyHex('#FCF6EF')"><div class="sw-n-color" style="background:#FCF6EF"><div class="sw-n-ov"><span>Copy</span></div></div><div class="sw-n-info"><div class="sw-n-name">Pearl</div><div class="sw-n-hex">#FCF6EF</div></div></div>
+        <div class="sw-neutral" onclick="copyHex('#F0E9E3')"><div class="sw-n-color" style="background:#F0E9E3"><div class="sw-n-ov"><span>Copy</span></div></div><div class="sw-n-info"><div class="sw-n-name">Egg Shell</div><div class="sw-n-hex">#F0E9E3</div></div></div>
+        <div class="sw-neutral" onclick="copyHex('#40424D')"><div class="sw-n-color" style="background:#40424D"><div class="sw-n-ov"><span>Copy</span></div></div><div class="sw-n-info"><div class="sw-n-name">Graphite</div><div class="sw-n-hex">#40424D</div></div></div>
+        <div class="sw-neutral" onclick="copyHex('#1E1E24')"><div class="sw-n-color" style="background:#1E1E24"><div class="sw-n-ov"><span>Copy</span></div></div><div class="sw-n-info"><div class="sw-n-name">Arsenic</div><div class="sw-n-hex">#1E1E24</div></div></div>
+        <div class="sw-neutral" onclick="copyHex('#131313')"><div class="sw-n-color" style="background:#131313"><div class="sw-n-ov"><span>Copy</span></div></div><div class="sw-n-info"><div class="sw-n-name">Obsidian</div><div class="sw-n-hex">#131313</div></div></div>
       </div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- TYPOGRAPHY SECTION -->
-<section id="type">
-  <div class="sec-row">
-    <div class="sec-label">Foundations</div>
-    <div class="sec-title">Typography</div>
+<!-- TYPOGRAPHY -->
+<div id="p-type" class="page">
+  <div class="hero">
+    <span class="hero-lbl">Foundation · Typography</span>
+    <h1>Typography</h1>
+    <p class="hero-desc">Each typeface has a defined role. Never substitute or mix outside these guidelines.</p>
   </div>
+  <div class="sec-row"><span class="sec-lbl">Typefaces</span></div>
   <div class="type-body">
     <div class="type-grid">
       <!-- Trove Super Condensed -->
-      <div class="tc">
-        <div class="tc-thumb">
-          <img src="https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/typography/trove_cover.png" alt="Trove Super Condensed">
+      <div class="type-card">
+        <div class="tc-thumb" style="background:#131313">
           <div class="tc-thumb-inner">
-            <div class="tc-label">Headline Font</div>
+            <span class="tc-fname on-dark">Trove Super Condensed</span>
+            <div class="tc-specimen">
+              <span class="trove-spec">TROVE</span>
+              <span class="trove-spec">SUPER</span>
+            </div>
+            <span class="tc-usecase on-dark">Headlines · Display · Uppercase only</span>
           </div>
         </div>
         <div class="tc-meta">
-          <div class="tc-name">Trove Super Condensed</div>
+          <div class="tc-top"><span class="tc-name">Trove Super Condensed</span></div>
           <div class="tc-desc">One weight · Pre-optimized for screen · Never modify</div>
-          <button class="tc-dl" onclick="dlFont('trove')">OTF ↓</button>
+          <br>
+          <button class="dl-pill" onclick="alert('Download Trove font from the Assets page')">OTF ↓</button>
         </div>
       </div>
-
       <!-- Anton -->
-      <div class="tc">
-        <div class="tc-thumb">
-          <img src="https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/typography/anton_cover.png" alt="Anton">
+      <div class="type-card">
+        <div class="tc-thumb" style="background:#EDE8E4">
           <div class="tc-thumb-inner">
-            <div class="tc-label">ONLY USED IF TROVE IS NOT AVAILABLE</div>
+            <span class="tc-fname on-light">Anton</span>
+            <div class="tc-specimen">
+              <span class="anton-spec">ANTON</span>
+            </div>
+            <span class="tc-usecase on-light">Fallback · Google Slides · External docs</span>
           </div>
         </div>
         <div class="tc-meta">
-          <div class="tc-name">Anton</div>
+          <div class="tc-top"><span class="tc-name">Anton</span></div>
           <div class="tc-desc">Use when Trove unavailable · Free & open source</div>
-          <button class="tc-dl" onclick="dlFont('anton')">OTF ↓</button>
+          <br>
+          <a class="dl-pill" href="https://fonts.google.com/specimen/Anton" target="_blank">WOFF2 ↓</a>
         </div>
       </div>
-
       <!-- Archivo -->
-      <div class="tc">
-        <div class="tc-thumb">
-          <img src="https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/typography/archivo_cover.png" alt="Archivo">
+      <div class="type-card">
+        <div class="tc-thumb" style="background:#FFFCF9">
           <div class="tc-thumb-inner">
-            <div class="tc-label">Body, UI, Subheads, Highlights</div>
+            <span class="tc-fname on-light">Archivo</span>
+            <div class="tc-specimen">
+              <div class="archivo-spec">
+                <div class="aw"><span class="aw-w">400</span><span class="aw-t">Body copy &amp; paragraphs</span></div>
+                <div class="aw"><span class="aw-w">500</span><span class="aw-t">UI labels &amp; captions</span></div>
+                <div class="aw"><span class="aw-w">600</span><span class="aw-t">Emphasis &amp; highlights</span></div>
+                <div class="aw"><span class="aw-w">700</span><span class="aw-t" style="font-weight:700">Subheadings &amp; titles</span></div>
+              </div>
+            </div>
+            <span class="tc-usecase on-light">Body · UI · Captions · Supporting text</span>
           </div>
         </div>
         <div class="tc-meta">
-          <div class="tc-name">Archivo</div>
+          <div class="tc-top"><span class="tc-name">Archivo</span></div>
           <div class="tc-desc">400 / 500 / 600 / 700 · Clean and neutral</div>
-          <button class="tc-dl" onclick="dlFont('archivo')">OTF ↓</button>
+          <br>
+          <a class="dl-pill" href="https://fonts.google.com/specimen/Archivo" target="_blank">WOFF2 ↓</a>
         </div>
       </div>
     </div>
   </div>
-</section>
-
-<!-- MOTION SECTION (WIP) -->
-<section id="motion">
-  <div class="wip">
-    <div class="wip-i">
-      <div class="wip-chip">Coming Soon</div>
-      <h1>Motion<em>Guide</em></h1>
-      <p>Principles for animation, transitions, and microinteractions that bring the Trove identity to life with intention and elegance.</p>
-      <div class="wip-prog"><div class="wip-fill"></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ICONOGRAPHY SECTION (WIP) -->
-<section id="icons">
-  <div class="wip">
-    <div class="wip-i">
-      <div class="wip-chip">Coming Soon</div>
-      <h1>Icon<em>System</em></h1>
-      <p>A cohesive set of icons designed to complement the Trove visual language across digital and print applications.</p>
-      <div class="wip-prog"><div class="wip-fill"></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- PHOTOGRAPHY SECTION (WIP) -->
-<section id="photo">
-  <div class="wip">
-    <div class="wip-i">
-      <div class="wip-chip">Coming Soon</div>
-      <h1>Photography<em>Style</em></h1>
-      <p>Guidelines for photography that maintain visual consistency and reinforce the Trove brand personality across all media.</p>
-      <div class="wip-prog"><div class="wip-fill"></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ASSETS SECTION -->
-<section id="assets">
-  <div class="sec-row">
-    <div class="sec-label">Resources</div>
-    <div class="sec-title">Assets</div>
-  </div>
-  <div class="plat-body">
-    <div class="plat-lbl">Logos</div>
-    <div class="plat-row">
-      <div class="plat-left">
-        <div class="plat-dot" style="background:var(--k)"></div>
-        <div class="plat-name">Logo Pack</div>
-      </div>
-      <div class="plat-btns">
-        <button class="plat-btn" onclick="dlAsset('logo-svg')">SVG ↓</button>
-        <button class="plat-btn" onclick="dlAsset('logo-png')">PNG ↓</button>
-      </div>
-    </div>
-    <div class="plat-lbl" style="margin-top:20px">Guidelines</div>
-    <div class="plat-row">
-      <div class="plat-left">
-        <div class="plat-dot" style="background:var(--p1)"></div>
-        <div class="plat-name">Brand Book</div>
-      </div>
-      <div class="plat-btns">
-        <button class="plat-btn" onclick="dlAsset('brandbook')">PDF ↓</button>
-      </div>
-    </div>
-  </div>
-</section>
-
 </div>
 
+<!-- MOTION -->
+<div id="p-motion" class="page">
+  <div class="wip">
+    <div class="wip-i">
+      <div class="wip-chip">Work in Progress</div>
+      <h1>Motion</h1>
+      <p>Easing curves, timing guidelines, transition patterns, and animation principles.</p>
+      <div class="wip-prog"><div class="wip-fill"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ICONOGRAPHY -->
+<div id="p-icon" class="page">
+  <div class="wip">
+    <div class="wip-i">
+      <div class="wip-chip">Work in Progress</div>
+      <h1>Iconography</h1>
+      <p>System icons, sizing grid, stroke weights, and usage rules.</p>
+      <div class="wip-prog"><div class="wip-fill"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PHOTOGRAPHY -->
+<div id="p-photo" class="page">
+  <div class="wip">
+    <div class="wip-i">
+      <div class="wip-chip">Coming Soon</div>
+      <h1>Photography</h1>
+      <p>Cinematic and grounded. Authentic texture over polish.</p>
+      <div class="wip-prog"><div class="wip-fill"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- TEMPLATES -->
+<div id="p-templates" class="page">
+  <div class="wip">
+    <div class="wip-i">
+      <div class="wip-chip">Coming Soon</div>
+      <h1>Templates</h1>
+      <p>Presentation decks, email signatures, document templates.</p>
+      <div class="wip-prog"><div class="wip-fill"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ASSETS -->
+<div id="p-assets" class="page">
+  <div class="hero">
+    <span class="hero-lbl">Resources · Assets</span>
+    <h1>Brand <em>Assets</em></h1>
+    <p class="hero-desc">Official Treasure Trove assets for social platforms. Placeholders — swap with final files when ready.</p>
+  </div>
+  <div class="plat-body">
+    <div class="plat-lbl">Social Covers &amp; Profiles</div>
+    <div class="plat-row">
+      <div class="plat-left"><div class="plat-dot" style="background:#131313"></div><div class="plat-name">X / Twitter</div></div>
+      <div class="plat-btns"><span style="font:400 11px/1 var(--F);color:var(--muted)">Cover · 1500×500 &nbsp; Profile · 400×400</span></div>
+    </div>
+    <div class="plat-row">
+      <div class="plat-left"><div class="plat-dot" style="background:#FF0000"></div><div class="plat-name">YouTube</div></div>
+      <div class="plat-btns"><span style="font:400 11px/1 var(--F);color:var(--muted)">Cover · 2560×1440 &nbsp; Profile · 800×800</span></div>
+    </div>
+    <div class="plat-row">
+      <div class="plat-left"><div class="plat-dot" style="background:#0077B5"></div><div class="plat-name">LinkedIn</div></div>
+      <div class="plat-btns"><span style="font:400 11px/1 var(--F);color:var(--muted)">Cover · 1584×396 &nbsp; Profile · 300×300</span></div>
+    </div>
+    <div class="plat-row">
+      <div class="plat-left"><div class="plat-dot" style="background:#E1306C"></div><div class="plat-name">Instagram</div></div>
+      <div class="plat-btns"><span style="font:400 11px/1 var(--F);color:var(--muted)">Profile · 320×320</span></div>
+    </div>
+    <div class="plat-row">
+      <div class="plat-left"><div class="plat-dot" style="background:#FF4500"></div><div class="plat-name">Reddit</div></div>
+      <div class="plat-btns"><span style="font:400 11px/1 var(--F);color:var(--muted)">Cover · 1920×384 &nbsp; Profile · 256×256</span></div>
+    </div>
+    <div class="plat-lbl" style="margin-top:20px">Downloads</div>
+    <div class="plat-row">
+      <div class="plat-left"><div class="plat-dot" style="background:var(--k)"></div><div class="plat-name">Logo Pack</div></div>
+      <div class="plat-btns">
+        <a class="plat-btn" href="https://github.com/efikabak/ttbrand/raw/main/assets/logos.zip" download>SVG ↓</a>
+        <a class="plat-btn" href="https://github.com/efikabak/ttbrand/raw/main/assets/logos.zip" download>PNG ↓</a>
+      </div>
+    </div>
+    <div class="plat-row">
+      <div class="plat-left"><div class="plat-dot" style="background:var(--y)"></div><div class="plat-name">Brand Book</div></div>
+      <div class="plat-btns">
+        <a class="plat-btn" href="https://github.com/efikabak/ttbrand/raw/main/assets/brandbook.pdf" download>PDF ↓</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+
 <script>
-function showSection(id){const sections=['logo','color','type','motion','icons','photo','assets'];sections.forEach(s=>document.getElementById(s)?document.getElementById(s).style.display=s===id?'block':'none':null);document.querySelectorAll('.nav-item').forEach(item=>item.classList.remove('active'));event.target.classList.add('active')}
-
-function setupColorSwatches(){
-  const swatches=document.querySelectorAll('.swatch, .sw-ext-item, .sw-foil, .sw-neutral');
-  swatches.forEach(swatch=>{
-    swatch.addEventListener('click',()=>{
-      const parent=swatch.closest('.sw-primary, .sw-extended, .sw-neutrals');
-      parent.querySelectorAll('.swatch, .sw-ext-item, .sw-foil, .sw-neutral').forEach(s=>s.classList.remove('active'));
-      swatch.classList.add('active');
-      setTimeout(()=>swatch.classList.remove('active'),1200);
-    });
-  });
-}
-
-function dlFont(font){
-  const fonts={
-    trove:'https://github.com/efikabak/ttbrand/raw/main/assets/fonts/Trove_SuperCondensed.otf',
-    anton:'https://github.com/efikabak/ttbrand/raw/main/assets/fonts/Anton.otf',
-    archivo:'https://github.com/efikabak/ttbrand/raw/main/assets/fonts/Archivo.zip'
+function sp(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const p=document.getElementById(id);if(!p)return;
+  p.classList.add('active');window.scrollTo(0,0);
+  // Update active nav button
+  document.querySelectorAll('.nb-btn').forEach(b=>b.classList.remove('active'));
+  const pageToNav={
+    'p-primary':'ni-logo','p-secondary':'ni-logo','p-symbol':'ni-logo',
+    'p-safezone':'ni-logo','p-donts':'ni-logo'
   };
-  if(fonts[font]){
-    const link=document.createElement('a');
-    link.href=fonts[font];
-    link.download=true;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  if(pageToNav[id]){
+    const ni=document.getElementById(pageToNav[id]);
+    if(ni)ni.querySelector('.nb-btn').classList.add('active');
   }
 }
-
-function dlAsset(asset){
-  const assets={
-    'logo-svg':'https://github.com/efikabak/ttbrand/raw/main/assets/logos.zip',
-    'logo-png':'https://github.com/efikabak/ttbrand/raw/main/assets/logos.zip',
-    'brandbook':'https://github.com/efikabak/ttbrand/raw/main/assets/brandbook.pdf'
-  };
-  if(assets[asset]){
-    const link=document.createElement('a');
-    link.href=assets[asset];
-    link.download=true;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  }
+function closeAll(){
+  document.querySelectorAll('.ni').forEach(ni=>ni.classList.remove('open'));
 }
-
-document.addEventListener('DOMContentLoaded',setupColorSwatches);
+function tog(id){
+  const el=document.getElementById(id);if(!el)return;
+  el.classList.toggle('open');
+}
+function sa(el){
+  el.closest('.nsub').querySelectorAll('.ns-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+}
+function toggleMenu(){document.getElementById('mob-menu').classList.toggle('open');}
+function copyHex(hex){
+  navigator.clipboard.writeText(hex).catch(()=>{});
+  const t=document.getElementById('toast');
+  t.textContent='Copied '+hex;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),1800);
+}
+function dlFoilPNG(){
+  const c=document.createElement('canvas');c.width=1600;c.height=1600;
+  const ctx=c.getContext('2d');
+  const g=ctx.createLinearGradient(0,0,1600,1600);
+  g.addColorStop(0,'#F0D39D');g.addColorStop(.3,'#FDEED2');g.addColorStop(.65,'#DBC29B');g.addColorStop(1,'#A88043');
+  ctx.fillStyle=g;ctx.fillRect(0,0,1600,1600);
+  c.toBlob(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='TT_gold_foil.png';a.click()});
+}
 </script>
-
 </body>
 </html>
