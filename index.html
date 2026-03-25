@@ -275,18 +275,20 @@ html,body{height:100%;font-family:var(--F);background:var(--white);color:var(--k
 .intro-sub{font:400 16px/1.7 var(--F);color:#888;max-width:420px;margin-bottom:40px}
 .intro-cta{display:inline-flex;align-items:center;gap:10px;font:700 13px/1 var(--F);letter-spacing:.5px;background:var(--k);color:var(--white);border:none;padding:16px 28px;border-radius:4px;cursor:pointer;transition:all .2s}
 .intro-cta:hover{background:#2a2a2a;gap:14px}
-.intro-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:12px;padding:60px 0 60px 60px;border-left:1px solid var(--bd);height:100%;min-height:500px;align-content:center}
-.intro-tile{border:1px solid var(--bd);border-radius:10px;padding:28px;cursor:pointer;display:flex;flex-direction:column;justify-content:space-between;min-height:180px;transition:all .2s;position:relative;overflow:hidden}
+.intro-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:12px;padding:60px 0 60px 60px;border-left:1px solid var(--bd);align-content:start}
+.intro-tile{border:1px solid var(--bd);border-radius:10px;padding:28px 32px;cursor:pointer;display:flex;flex-direction:column;justify-content:space-between;transition:all .2s;position:relative;overflow:hidden}
 .intro-tile:hover{border-color:var(--k);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
-.intro-tile-lbl{font:700 10px/1 var(--F);letter-spacing:1.8px;text-transform:uppercase;color:#C5BFB8}
-.intro-tile-logo{background:var(--k);grid-column:span 2}
-.intro-tile-logo .intro-tile-lbl{color:rgba(255,255,255,.4)}
-.intro-tile-logo:hover{border-color:var(--k)}
-.intro-tile-img{width:55%;max-height:52px;object-fit:contain;display:block;margin-top:auto}
-.intro-color-dots{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}
-.intro-color-dots span{width:36px;height:36px;border-radius:50%;display:block;border:1px solid rgba(0,0,0,.06)}
-.intro-tile-type-specimen{font:900 88px/.85 var(--T);text-transform:uppercase;color:var(--k);display:block;margin-top:auto;opacity:.9}
-.intro-tile-assets-icon{font:300 72px/1 var(--F);color:var(--k);display:block;margin-top:auto;opacity:.25}
+.intro-tile-lbl{font:700 10px/1 var(--F);letter-spacing:1.8px;text-transform:uppercase;color:#C5BFB8;margin-bottom:28px}
+.intro-tile-logo{background:var(--k);grid-column:span 2;min-height:160px;padding:28px 36px}
+.intro-tile-logo .intro-tile-lbl{color:rgba(255,255,255,.3);margin-bottom:0}
+.intro-tile-logo:hover{border-color:rgba(255,255,255,.2)}
+.intro-tile-logo-inner{display:flex;align-items:center;justify-content:space-between;margin-top:20px}
+.intro-tile-img{width:52%;max-height:48px;object-fit:contain;display:block}
+.intro-tile-logo-arrow{font:400 28px/1 var(--F);color:rgba(255,255,255,.25)}
+.intro-color-dots{display:flex;gap:8px;flex-wrap:wrap}
+.intro-color-dots span{width:32px;height:32px;border-radius:50%;display:block;border:1px solid rgba(0,0,0,.06)}
+.intro-tile-type-specimen{font:900 96px/.82 var(--T);text-transform:uppercase;color:var(--k);display:block;line-height:.82}
+.intro-tile-assets-icon{font:300 64px/1 var(--F);color:var(--k);display:block;opacity:.2}
 .intro-footer{display:flex;align-items:center;justify-content:space-between;padding:20px 60px;border-top:1px solid var(--bd);font:400 11px/1 var(--F);color:#C5BFB8}
 @media(max-width:900px){
   .intro-body{grid-template-columns:1fr;padding:0 24px}
@@ -437,26 +439,32 @@ html,body{height:100%;font-family:var(--F);background:var(--white);color:var(--k
       <div class="intro-grid">
         <div class="intro-tile intro-tile-logo" onclick="enterBrandBook()">
           <span class="intro-tile-lbl">Logo</span>
-          <img src="https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/logo/primary/TT_logo_dark.svg" alt="TT Logo" class="intro-tile-img"/>
+          <div class="intro-tile-logo-inner">
+            <img src="https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/logo/primary/TT_logo_dark.svg" alt="TT Logo" class="intro-tile-img"/>
+            <span class="intro-tile-logo-arrow">→</span>
+          </div>
         </div>
-        <div class="intro-tile intro-tile-color" onclick="sp('p-color');exitIntro()">
+        <div class="intro-tile intro-tile-color" onclick="sp('p-color');exitIntro()" style="min-height:180px">
           <span class="intro-tile-lbl">Color</span>
           <div class="intro-color-dots">
             <span style="background:#131313"></span>
-            <span style="background:#EDE8E4"></span>
+            <span style="background:#EDE8E4;border:1px solid #ddd"></span>
             <span style="background:#FCCF00"></span>
             <span style="background:#001F47"></span>
             <span style="background:#8A55F8"></span>
             <span style="background:#FC5400"></span>
           </div>
         </div>
-        <div class="intro-tile intro-tile-type" onclick="sp('p-type');exitIntro()">
+        <div class="intro-tile intro-tile-type" onclick="sp('p-type');exitIntro()" style="min-height:180px">
           <span class="intro-tile-lbl">Typography</span>
-          <span class="intro-tile-type-specimen">Aa</span>
+          <span class="intro-tile-type-specimen">Tt</span>
         </div>
-        <div class="intro-tile intro-tile-assets" onclick="sp('p-assets');exitIntro()">
+        <div class="intro-tile intro-tile-assets" onclick="sp('p-assets');exitIntro()" style="min-height:180px;grid-column:span 2">
           <span class="intro-tile-lbl">Assets</span>
-          <span class="intro-tile-assets-icon">↓</span>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-top:auto">
+            <span style="font:900 15px/1 var(--F);color:var(--k);letter-spacing:.5px">SVG · PNG · OTF · Social Templates</span>
+            <span class="intro-tile-assets-icon">↓</span>
+          </div>
         </div>
       </div>
     </div>
