@@ -19,6 +19,127 @@
 }
 html,body{height:100%;font-family:var(--F);background:var(--white);color:var(--k);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
+
+/* INTRO PAGE */
+.intro-wrap{
+  min-height:calc(100vh - var(--th));
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:stretch;
+  overflow:hidden;
+}
+.intro-inner{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:80px 64px;
+  position:relative;
+  z-index:1;
+}
+.intro-eyebrow{
+  font:700 10px/1 var(--F);
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+  color:#C5BFB8;
+  margin-bottom:32px;
+}
+.intro-headline{
+  display:flex;
+  flex-direction:column;
+  gap:0;
+  margin-bottom:28px;
+}
+.intro-line{
+  font:900 clamp(72px,7vw,112px)/.87 var(--T);
+  text-transform:uppercase;
+  color:var(--k);
+  display:block;
+  line-height:.87;
+}
+.intro-line-cross{
+  position:relative;
+  display:inline-block;
+  width:fit-content;
+}
+.intro-normal{
+  color:transparent;
+  -webkit-text-stroke:2px var(--k);
+  opacity:.18;
+}
+.intro-strike{
+  position:absolute;
+  left:0;top:0;
+  color:transparent;
+  -webkit-text-stroke:2px var(--k);
+  opacity:.18;
+  text-decoration:line-through;
+  text-decoration-thickness:2px;
+  text-decoration-color:var(--k);
+  opacity:.18;
+}
+.intro-line-alt{
+  color:var(--y);
+  -webkit-text-stroke:0;
+}
+.intro-desc{
+  font:400 15px/1.7 var(--F);
+  color:var(--muted);
+  max-width:420px;
+  margin-bottom:36px;
+}
+.intro-actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.intro-btn-primary{
+  display:inline-flex;align-items:center;gap:8px;
+  font:700 13px/1 var(--F);
+  background:var(--k);color:var(--white);
+  border:none;padding:14px 24px;border-radius:3px;
+  cursor:pointer;transition:all .15s;letter-spacing:.3px;
+}
+.intro-btn-primary svg{width:16px;height:16px;transition:transform .15s}
+.intro-btn-primary:hover{background:#333}
+.intro-btn-primary:hover svg{transform:translateX(3px)}
+.intro-btn-secondary{
+  display:inline-flex;align-items:center;gap:8px;
+  font:700 13px/1 var(--F);
+  background:transparent;color:var(--k);
+  border:1.5px solid var(--bd);padding:13px 24px;border-radius:3px;
+  cursor:pointer;transition:all .15s;
+}
+.intro-btn-secondary:hover{border-color:var(--k)}
+.intro-wordmark-wrap{
+  position:relative;
+  background:var(--k);
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+  padding:60px;
+}
+.intro-wordmark-wrap::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:radial-gradient(ellipse at 30% 50%, rgba(252,207,0,.12) 0%, transparent 60%),
+             radial-gradient(ellipse at 80% 80%, rgba(252,84,0,.06) 0%, transparent 50%);
+}
+.intro-wordmark-img{
+  width:100%;
+  max-width:380px;
+  display:block;
+  position:relative;
+  z-index:1;
+  animation:introLogoFade 1s ease forwards;
+  opacity:0;
+}
+@keyframes introLogoFade{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@media(max-width:900px){
+  .intro-wrap{grid-template-columns:1fr;min-height:auto}
+  .intro-inner{padding:48px 24px}
+  .intro-wordmark-wrap{min-height:300px;padding:40px}
+  .intro-wordmark-img{max-width:260px}
+}
+
 /* PAGE TRANSITIONS */
 .page{display:none;opacity:0}
 .page.active{display:block;animation:fadeIn .3s ease forwards}
@@ -348,6 +469,12 @@ html,body{height:100%;font-family:var(--F);background:var(--white);color:var(--k
 <div class="mob-menu" id="mob-menu">
   <button class="mob-close" onclick="toggleMenu()">✕ Close</button>
   <nav class="nb">
+    <div class="ng">Overview</div>
+    <div class="ni"><button class="nb-btn active" id="nb-intro" onclick="sp('p-intro');closeAll();setNb(this)"><span>Introduction</span></button></div>
+    <div class="nbdr"></div>
+    <div class="ng">Overview</div>
+    <div class="ni"><button class="nb-btn" onclick="sp('p-intro');toggleMenu()"><span>Introduction</span></button></div>
+    <div class="nbdr"></div>
     <div class="ng">Foundations</div>
     <div class="ni open" id="mni-logo">
       <button class="nb-btn" onclick="tog('mni-logo')"><span>Logo</span></button>
@@ -376,9 +503,12 @@ html,body{height:100%;font-family:var(--F);background:var(--white);color:var(--k
 <!-- SIDEBAR -->
 <aside class="sidebar">
   <nav class="nb">
+    <div class="ng">Overview</div>
+    <div class="ni"><button class="nb-btn active" id="nb-intro" onclick="sp('p-intro');closeAll();setNb(this)"><span>Introduction</span></button></div>
+    <div class="nbdr"></div>
     <div class="ng">Foundations</div>
     <div class="ni open" id="ni-logo">
-      <button class="nb-btn active" id="nb-logo" onclick="tog('ni-logo')">
+      <button class="nb-btn" id="nb-logo" onclick="tog('ni-logo')">
         <span>Logo</span>
       </button>
       <div class="nsub">
@@ -473,6 +603,37 @@ html,body{height:100%;font-family:var(--F);background:var(--white);color:var(--k
       <span>v1.0</span>
     </div>
   </div>
+</div>
+
+<!-- INTRO -->
+<div id="p-intro" class="page active">
+<div class="intro-wrap">
+  <div class="intro-inner">
+    <div class="intro-eyebrow">Brand Guidelines — v1.0</div>
+    <h1 class="intro-headline">
+      <span class="intro-line">WE ARE</span>
+      <span class="intro-line">TREASURE</span>
+      <span class="intro-line intro-line-cross">
+        <span class="intro-normal">TROVE</span>
+        <span class="intro-strike" aria-hidden="true">TROVE</span>
+      </span>
+      <span class="intro-line intro-line-alt">BOLD</span>
+    </h1>
+    <p class="intro-desc">A single source of truth for the Treasure Trove brand — colors, type, logo, motion, and everything in between. Built for the people who make it real.</p>
+    <div class="intro-actions">
+      <button class="intro-btn-primary" onclick="sp('p-primary');closeAll();document.getElementById('ni-logo').classList.add('open');document.querySelectorAll('.ns-btn')[0].classList.add('active');document.getElementById('nb-logo').classList.add('active')">
+        Explore the Brand
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </button>
+      <button class="intro-btn-secondary" onclick="sp('p-assets');closeAll();setNb(document.getElementById('nb-assets'))">
+        Download Assets
+      </button>
+    </div>
+  </div>
+  <div class="intro-wordmark-wrap">
+    <img class="intro-wordmark-img" src="https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/logo/primary/TT_logo_dark.svg" alt="Treasure Trove"/>
+  </div>
+</div>
 </div>
 
 <!-- PRIMARY LOGO -->
