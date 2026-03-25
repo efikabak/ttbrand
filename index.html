@@ -220,6 +220,17 @@ html,body{height:100%;font-family:var(--F);background:var(--white);color:var(--k
 .plat-btn{font:600 12px/1 var(--F);padding:9px 20px;border:1.5px solid var(--bd);border-radius:3px;background:transparent;color:var(--muted);cursor:pointer;transition:all .15s;white-space:nowrap}
 .plat-btn:hover{background:var(--k);border-color:var(--k);color:var(--white)}
 
+
+/* INTRO PAGE */
+.intro-page{position:fixed;inset:0;background:#EDE8E4;z-index:500;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:opacity .6s ease,transform .6s ease}
+.intro-page.gone{opacity:0;pointer-events:none;transform:scale(1.03)}
+.intro-wm{font-family:var(--T);font-size:clamp(56px,9vw,148px);font-weight:900;text-transform:uppercase;color:#131313;line-height:1;text-align:center;letter-spacing:-.02em;user-select:none;position:relative;z-index:2}
+.intro-wm em{font-style:normal;color:transparent;-webkit-text-stroke:2px #131313;opacity:.18}
+.intro-sub{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);font:500 11px/1 var(--F);letter-spacing:2px;text-transform:uppercase;color:#aaa;white-space:nowrap}
+.intro-sub span{display:inline-block;animation:bounce 1.8s ease-in-out infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.intro-year{position:absolute;top:32px;right:40px;font:500 11px/1 var(--F);color:#bbb;letter-spacing:1px}
+
 /* RESPONSIVE */
 @media(max-width:768px){
   :root{--nw:0px;--th:52px}
@@ -248,6 +259,14 @@ html,body{height:100%;font-family:var(--F);background:var(--white);color:var(--k
 </style>
 </head>
 <body>
+
+
+<!-- INTRO PAGE -->
+<div class="intro-page" id="intro-page" onclick="dismissIntro()">
+  <div class="intro-wm">TREASURE<br><em>TROVE</em></div>
+  <div class="intro-sub"><span>↓</span> &nbsp; Brand Guidelines</div>
+  <div class="intro-year">2025</div>
+</div>
 
 <div class="toast" id="toast"></div>
 
@@ -518,28 +537,28 @@ html,body{height:100%;font-family:var(--F);background:var(--white);color:var(--k
     <div class="dont-card">
       <div class="dont-preview" style="background:var(--ash)">
         <span class="dont-x"><svg viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="10" stroke="#FF3B30" stroke-width="1.8"/><line x1="7" y1="7" x2="15" y2="15" stroke="#FF3B30" stroke-width="1.8" stroke-linecap="round"/><line x1="15" y1="7" x2="7" y2="15" stroke="#FF3B30" stroke-width="1.8" stroke-linecap="round"/></svg></span>
-        <img src="https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/logo/primary/TT_logo_light.svg" style="transform:scaleY(.55) scaleX(1.5)" alt="Distorted logo"/>
+        <img src="https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/logo/primary/TT_logo_dark.svg" style="transform:scaleY(.55) scaleX(1.5)" alt="Distorted logo"/>
       </div>
       <div class="dont-meta"><h5>Do not distort</h5><p>Never stretch, squash, or alter proportions.</p></div>
     </div>
     <div class="dont-card">
       <div class="dont-preview" style="background:var(--ash)">
         <span class="dont-x"><svg viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="10" stroke="#FF3B30" stroke-width="1.8"/><line x1="7" y1="7" x2="15" y2="15" stroke="#FF3B30" stroke-width="1.8" stroke-linecap="round"/><line x1="15" y1="7" x2="7" y2="15" stroke="#FF3B30" stroke-width="1.8" stroke-linecap="round"/></svg></span>
-        <img src="https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/logo/primary/TT_logo_light.svg" style="filter:drop-shadow(4px 4px 10px rgba(0,0,0,.5))" alt="Shadow logo"/>
+        <img src="https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/logo/primary/TT_logo_dark.svg" style="filter:drop-shadow(4px 4px 10px rgba(0,0,0,.5))" alt="Shadow logo"/>
       </div>
       <div class="dont-meta"><h5>Do not add effects</h5><p>No drop shadows, glows, outlines, or gradients.</p></div>
     </div>
     <div class="dont-card">
       <div class="dont-preview" style="background:var(--ash)">
         <span class="dont-x"><svg viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="10" stroke="#FF3B30" stroke-width="1.8"/><line x1="7" y1="7" x2="15" y2="15" stroke="#FF3B30" stroke-width="1.8" stroke-linecap="round"/><line x1="15" y1="7" x2="7" y2="15" stroke="#FF3B30" stroke-width="1.8" stroke-linecap="round"/></svg></span>
-        <img src="https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/logo/primary/TT_logo_light.svg" style="filter:hue-rotate(160deg) saturate(4)" alt="Recolored logo"/>
+        <img src="https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/logo/primary/TT_logo_dark.svg" style="filter:hue-rotate(160deg) saturate(4)" alt="Recolored logo"/>
       </div>
       <div class="dont-meta"><h5>Do not alter colors</h5><p>Only use approved color variants. Never recolor arbitrarily.</p></div>
     </div>
     <div class="dont-card">
       <div class="dont-preview" style="background:repeating-linear-gradient(45deg,#e8e3dd,#e8e3dd 5px,#d5d0ca 5px,#d5d0ca 10px)">
         <span class="dont-x"><svg viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="10" stroke="#FF3B30" stroke-width="1.8"/><line x1="7" y1="7" x2="15" y2="15" stroke="#FF3B30" stroke-width="1.8" stroke-linecap="round"/><line x1="15" y1="7" x2="7" y2="15" stroke="#FF3B30" stroke-width="1.8" stroke-linecap="round"/></svg></span>
-        <img src="https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/logo/primary/TT_logo_light.svg" alt="Logo on pattern"/>
+        <img src="https://raw.githubusercontent.com/efikabak/ttbrand/main/assets/logo/primary/TT_logo_dark.svg" alt="Logo on pattern"/>
       </div>
       <div class="dont-meta"><h5>Do not use on patterns</h5><p>Always place on a clean, solid-color background.</p></div>
     </div>
@@ -907,6 +926,14 @@ function dlFoilPNG(){
   ctx.fillStyle=g;ctx.fillRect(0,0,1600,1600);
   c.toBlob(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='TT_gold_foil.png';a.click();showToast('Downloading TT_gold_foil.png');});
 }
+
+function dismissIntro(){
+  document.getElementById('intro-page').classList.add('gone');
+  setTimeout(()=>{document.getElementById('intro-page').style.display='none';},700);
+}
+// Auto-dismiss after 6s if not clicked
+setTimeout(()=>{const i=document.getElementById('intro-page');if(i&&!i.classList.contains('gone'))dismissIntro();},6000);
+
 </script>
 </body>
 </html>
