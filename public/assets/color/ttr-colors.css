@@ -1,0 +1,17 @@
+:root {
+  --ttr-obsidian: #131313;
+  --ttr-ash: #EDE8E4;
+  --ttr-golden-yellow: #FCCF00;
+  --ttr-navy: #001F47;
+  --ttr-bronze: #642D00;
+  --ttr-forest: #2A6400;
+  --ttr-violet: #8A55F8;
+  --ttr-blaze: #FC5400;
+  --ttr-emerald: #BCE0A2;
+  --ttr-cloud: #FFFCF9;
+  --ttr-pearl: #FCF6EF;
+  --ttr-egg-shell: #F0E9E3;
+  --ttr-graphite: #40424D;
+  --ttr-arsenic: #1E1E24;
+  --ttr-gold-foil: linear-gradient(135deg, #F0D39D 0%, #FDEED2 30%, #DBC29B 65%, #A88043 100%);
+}

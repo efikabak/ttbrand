@@ -1,0 +1,184 @@
+{
+  "palette": [
+    {
+      "group": "Primary",
+      "name": "Obsidian",
+      "hex": "#131313",
+      "rgb": [
+        19,
+        19,
+        19
+      ],
+      "cmyk": [
+        0,
+        0,
+        0,
+        93
+      ]
+    },
+    {
+      "group": "Primary",
+      "name": "Ash",
+      "hex": "#EDE8E4",
+      "rgb": [
+        237,
+        232,
+        228
+      ],
+      "cmyk": [
+        0,
+        2,
+        4,
+        7
+      ]
+    },
+    {
+      "group": "Primary",
+      "name": "Golden Yellow",
+      "hex": "#FCCF00",
+      "rgb": [
+        252,
+        207,
+        0
+      ],
+      "cmyk": [
+        0,
+        18,
+        100,
+        1
+      ]
+    },
+    {
+      "group": "Extended",
+      "name": "Navy",
+      "hex": "#001F47",
+      "rgb": [
+        0,
+        31,
+        71
+      ]
+    },
+    {
+      "group": "Extended",
+      "name": "Bronze",
+      "hex": "#642D00",
+      "rgb": [
+        100,
+        45,
+        0
+      ]
+    },
+    {
+      "group": "Extended",
+      "name": "Forest",
+      "hex": "#2A6400",
+      "rgb": [
+        42,
+        100,
+        0
+      ]
+    },
+    {
+      "group": "Extended",
+      "name": "Violet",
+      "hex": "#8A55F8",
+      "rgb": [
+        138,
+        85,
+        248
+      ]
+    },
+    {
+      "group": "Extended",
+      "name": "Blaze",
+      "hex": "#FC5400",
+      "rgb": [
+        252,
+        84,
+        0
+      ]
+    },
+    {
+      "group": "Extended",
+      "name": "Emerald",
+      "hex": "#BCE0A2",
+      "rgb": [
+        188,
+        224,
+        162
+      ]
+    },
+    {
+      "group": "Neutrals",
+      "name": "Cloud",
+      "hex": "#FFFCF9",
+      "rgb": [
+        255,
+        252,
+        249
+      ]
+    },
+    {
+      "group": "Neutrals",
+      "name": "Pearl",
+      "hex": "#FCF6EF",
+      "rgb": [
+        252,
+        246,
+        239
+      ]
+    },
+    {
+      "group": "Neutrals",
+      "name": "Egg Shell",
+      "hex": "#F0E9E3",
+      "rgb": [
+        240,
+        233,
+        227
+      ]
+    },
+    {
+      "group": "Neutrals",
+      "name": "Graphite",
+      "hex": "#40424D",
+      "rgb": [
+        64,
+        66,
+        77
+      ]
+    },
+    {
+      "group": "Neutrals",
+      "name": "Arsenic",
+      "hex": "#1E1E24",
+      "rgb": [
+        30,
+        30,
+        36
+      ]
+    }
+  ],
+  "goldFoil": {
+    "type": "linear-gradient",
+    "angle": 135,
+    "stops": [
+      {
+        "hex": "#F0D39D",
+        "at": 0
+      },
+      {
+        "hex": "#FDEED2",
+        "at": 30
+      },
+      {
+        "hex": "#DBC29B",
+        "at": 65
+      },
+      {
+        "hex": "#A88043",
+        "at": 100
+      }
+    ]
+  }
+}

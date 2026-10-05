@@ -1,0 +1,684 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>TTR Studio</title>
+<meta name="description" content="The Treasure Trove brand, ready to use. Logos, color, type, templates and texture, one click away.">
+<meta name="theme-color" content="#131313">
+<meta property="og:type" content="website">
+<meta property="og:title" content="TTR Studio · Treasure Trove brand">
+<meta property="og:description" content="Logos, color, type, templates and texture, one click away.">
+<meta property="og:url" content="https://ttbrand.vercel.app/">
+<meta property="og:image" content="https://ttbrand.vercel.app/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://ttbrand.vercel.app/og.jpg">
+<link rel="canonical" href="https://ttbrand.vercel.app/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Anton&display=swap">
+<link rel="preload" href="/assets/fonts/Trove-SuperCondensed.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"Trove";src:url(/assets/fonts/Trove-SuperCondensed.woff2) format("woff2");font-display:swap}
+/* Layout: fixed chapter rail on the left, one long brand book on the right; sections alternate Obsidian and Ash */
+:root{
+  --obsidian:#131313; --ink:#0b0b0b; --ash:#EDE8E4; --gold:#FCCF00;
+  --fg:#EDE8E4; --muted:rgba(237,232,228,.62); --line:rgba(237,232,228,.12); --card:#1b1b1b; --card2:#222;
+  --display:"Trove","Anton",Impact,"Arial Narrow",sans-serif;
+  --body:Archivo,-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+  --rail:236px; --r:16px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--obsidian);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.07;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+img,video{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
+[hidden]{display:none!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.skip{position:fixed;left:16px;top:-64px;z-index:300;background:var(--gold);color:var(--ink);padding:10px 16px;border-radius:999px;font-weight:700;text-decoration:none}
+.skip:focus{top:16px}
+
+/* ---------- rail ---------- */
+.rail{position:fixed;inset:0 auto 0 0;width:var(--rail);padding:28px 22px calc(24px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:28px;border-right:1px solid var(--line);background:var(--obsidian);z-index:20}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand img{width:22px;height:auto}
+.brand b{font-family:var(--display);font-weight:400;font-size:26px;letter-spacing:.02em;line-height:1;text-transform:uppercase}
+.brand span{display:block;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.nav{display:flex;flex-direction:column;gap:2px;margin:0;padding:0;list-style:none}
+.nav a{display:flex;gap:12px;align-items:baseline;padding:8px 10px;border-radius:10px;text-decoration:none;color:var(--muted);font-weight:600;font-size:14px;transition:color .15s,background .15s}
+.nav a i{font-style:normal;font-family:var(--mono);font-size:11px;opacity:.6;width:16px}
+.nav a:hover{color:var(--fg);background:rgba(237,232,228,.05)}
+.nav a.on{color:var(--fg);background:rgba(237,232,228,.08)}
+.rail .kit{margin-top:auto}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 20px;border-radius:999px;border:0;background:var(--gold);color:var(--ink);font-weight:700;font-size:15px;text-decoration:none;cursor:pointer;white-space:nowrap;transition:transform .15s,filter .15s}
+.btn:hover{filter:brightness(1.06)}
+.btn:active{transform:scale(.98)}
+.btn small{font-weight:600;opacity:.65;font-size:12px}
+.btn svg{width:16px;height:16px;flex:none}
+.btn.ghost{background:rgba(237,232,228,.08);color:var(--fg);box-shadow:inset 0 0 0 1px var(--line)}
+.btn.ghost:hover{background:rgba(237,232,228,.14)}
+.btn.sm{padding:8px 14px;font-size:13px;gap:8px}
+.btn.full{width:100%;justify-content:center}
+.light .btn.ghost{background:rgba(19,19,19,.06);color:var(--obsidian);box-shadow:inset 0 0 0 1px rgba(19,19,19,.14)}
+.light .btn.ghost:hover{background:rgba(19,19,19,.1)}
+.dl{display:flex;flex-wrap:wrap;gap:8px}
+
+/* ---------- main + sections ---------- */
+main{margin-left:var(--rail)}
+section{padding:120px max(32px,env(safe-area-inset-right)) 120px 56px;position:relative}
+section.light{background:var(--ash);color:var(--obsidian);--muted:rgba(19,19,19,.62);--line:rgba(19,19,19,.12);--card:#e3ddd8;--card2:#d9d3cd}
+.wrap{max-width:1120px;margin:0 auto}
+.eyebrow{display:flex;gap:12px;align-items:center;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:22px}
+.eyebrow i{font-style:normal;font-family:var(--mono);letter-spacing:0}
+/* chapter titles: stacked Trove blocks, same as the posts */
+.blk{font-family:var(--display);font-weight:400;text-transform:uppercase;line-height:.86;font-size:clamp(56px,7vw,112px);letter-spacing:.005em;margin:0 0 30px}
+.blk span{display:block;width:fit-content;background:var(--ash);color:var(--obsidian);padding:.09em .14em .02em}
+.blk span.g{background:var(--gold);color:var(--ink)}
+.light .blk span{background:var(--obsidian);color:var(--ash)}
+.light .blk span.g{background:var(--gold);color:var(--ink)}
+.lead{font-size:clamp(18px,1.6vw,21px);line-height:1.5;max-width:60ch;margin:0 0 56px;color:var(--fg)}
+.light .lead{color:var(--obsidian)}
+h3{font-size:20px;font-weight:700;letter-spacing:-.01em;margin:0 0 6px}
+p{margin:0}
+.muted{color:var(--muted)}
+.sub-h{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin:72px 0 20px}
+.sub-h h3{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0}
+
+/* ---------- hero ---------- */
+.hero{min-height:min(92vh,960px);display:flex;align-items:flex-end;padding-top:160px;overflow:hidden;isolation:isolate}
+.hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;opacity:.55}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:url(/assets/thumbs/film.jpg) center/cover;mix-blend-mode:screen;opacity:.55}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg,rgba(19,19,19,.15) 0%,rgba(19,19,19,.45) 55%,var(--obsidian) 100%)}
+.hero .wrap{width:100%}
+.hero .blk{font-size:clamp(72px,10vw,168px);margin-bottom:28px}
+.hero .lead{margin-bottom:34px;max-width:52ch}
+.hero-cta{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.quick{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+
+/* ---------- cards ---------- */
+.grid{display:grid;gap:20px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{position:relative;background:var(--card);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.card::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px var(--line);pointer-events:none;z-index:2}
+.card .body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:14px;flex:1}
+.card .row{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+
+/* logo stage */
+.stage{position:relative;display:grid;place-items:center;transition:background .25s;background:var(--obsidian)}
+.stage[data-bg="ash"]{background:var(--ash)}
+.stage img{width:var(--w,62%);height:auto}
+.stage.wide{aspect-ratio:16/7}
+.stage.sq{aspect-ratio:1/1}
+.swatches{display:flex;gap:6px}
+.sw{appearance:none;border:0;cursor:pointer;display:inline-flex;align-items:center;gap:7px;padding:6px 11px 6px 7px;border-radius:999px;background:rgba(237,232,228,.06);font-size:13px;font-weight:600;color:var(--muted)}
+.sw::before{content:"";width:14px;height:14px;border-radius:50%;background:var(--c);box-shadow:inset 0 0 0 1px rgba(127,127,127,.5)}
+.sw[aria-pressed="true"]{background:rgba(237,232,228,.14);color:var(--fg)}
+.avatars{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.avatar{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.avatar img{border-radius:50%;width:100%;aspect-ratio:1/1;outline:1px solid var(--line);outline-offset:-1px}
+
+/* clear space */
+.space{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:56px;align-items:center}
+.space-demo{display:grid;place-items:center;background:var(--obsidian);border-radius:var(--r);padding:48px;aspect-ratio:1/1}
+.cs{position:relative;padding:calc(var(--x)/2);outline:1.5px dashed rgba(252,207,0,.8);outline-offset:0;--x:min(26vw,180px)}
+.cs{background:repeating-linear-gradient(-45deg,rgba(252,207,0,.18) 0 1px,transparent 1px 7px)}
+.cs img{width:var(--x);height:auto;background:var(--obsidian);outline:1px solid rgba(252,207,0,.6)}
+.cs .x{position:absolute;font-family:var(--mono);font-size:12px;color:var(--gold);white-space:nowrap;line-height:1;background:var(--obsidian);padding:3px 4px}
+.cs .x.t{top:calc(var(--x)/4);left:50%;transform:translate(-50%,-50%)}
+.cs .x.b{bottom:calc(var(--x)/4);left:50%;transform:translate(-50%,50%)}
+.cs .x.r{right:calc(var(--x)/4);top:50%;transform:translate(50%,-50%)}
+.cs .x.l{left:calc(var(--x)/4);top:50%;transform:translate(-50%,-50%)}
+.cs .xw{position:absolute;left:calc(var(--x)/2);right:calc(var(--x)/2);bottom:-30px;border:1.5px solid var(--gold);border-top:0;padding:0 0 4px;line-height:1;font-family:var(--mono);font-size:12px;color:var(--gold);text-align:center}
+.rules{display:flex;flex-direction:column;gap:22px}
+.rule b{display:block;font-size:17px;margin-bottom:4px}
+.rule p{color:var(--muted)}
+.big-num{font-family:var(--display);font-size:72px;line-height:.9;color:var(--obsidian)}
+
+/* don'ts */
+.dont .stage{aspect-ratio:4/3;overflow:hidden}
+.dont .stage img{width:58%}
+.dont .tag{position:absolute;top:12px;left:12px;width:26px;height:26px;border-radius:50%;background:#e5484d;color:#fff;display:grid;place-items:center;font-weight:800;font-size:14px}
+.dont .body{gap:4px}
+
+/* color */
+.chips{display:grid;gap:16px}
+.chip{position:relative;border-radius:var(--r);overflow:hidden;background:var(--card);display:flex;flex-direction:column;min-width:0}
+.chip::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px var(--line);pointer-events:none}
+.chip .fill{background:var(--c);aspect-ratio:var(--ar,4/3);position:relative;box-shadow:inset 0 -1px 0 var(--line)}
+.chip .fill.lt{box-shadow:inset 0 0 0 1px rgba(19,19,19,.18)}
+.chip .fill .aa{position:absolute;left:16px;bottom:14px;font:600 clamp(22px,2.4vw,34px)/1 var(--body);letter-spacing:-.02em}
+.ext .chip .fill .aa,.neu .chip .fill .aa{font-size:18px;left:12px;bottom:10px}
+.chip .info{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px}
+.chip .info b{font-size:16px}
+.vals{display:flex;flex-direction:column;gap:2px}
+.val{appearance:none;border:0;background:none;padding:2px 0;text-align:left;cursor:copy;font-family:var(--mono);font-size:12.5px;color:var(--muted);display:flex;gap:8px;border-radius:4px}
+.val:hover{color:inherit}
+.val span{opacity:.6;width:38px;flex:none}
+.prim{grid-template-columns:repeat(3,minmax(0,1fr))}
+.prim .chip .fill{--ar:4/5}
+.prim .info b{font-size:22px}
+.ext{grid-template-columns:repeat(6,minmax(0,1fr))}
+.neu{grid-template-columns:repeat(5,minmax(0,1fr))}
+.foil{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:0;border-radius:var(--r);overflow:hidden;box-shadow:inset 0 0 0 1px var(--line);background:var(--card)}
+.foil .fill{background:linear-gradient(135deg,#F0D39D 0%,#FDEED2 30%,#DBC29B 65%,#A88043 100%);min-height:220px}
+.foil .info{padding:24px;display:flex;flex-direction:column;gap:12px;justify-content:center}
+
+/* type */
+.spec{border-radius:var(--r);background:var(--card);box-shadow:inset 0 0 0 1px var(--line);padding:36px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:36px;align-items:end;overflow:hidden}
+.spec .glyph{font-family:var(--display);font-size:clamp(120px,15vw,240px);line-height:.8;text-transform:uppercase}
+.spec .abc{font-family:var(--display);font-size:clamp(28px,3vw,40px);line-height:1.05;text-transform:uppercase;letter-spacing:.02em;overflow-wrap:anywhere}
+.spec .meta{display:flex;flex-direction:column;gap:14px}
+.tag2{display:inline-flex;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:4px 9px;border-radius:999px;background:rgba(252,207,0,.14);color:var(--gold);width:fit-content}
+.weights{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.weights .card .body{gap:8px}
+.weights .w{font-size:44px;line-height:1;letter-spacing:-.02em}
+.tester{border-radius:var(--r);background:var(--card);border:1px solid var(--line);overflow:hidden}
+.tester .bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:14px;border-bottom:1px solid var(--line)}
+.tester input[type=text]{flex:1;min-width:200px;background:rgba(237,232,228,.06);border:0;border-radius:10px;padding:11px 14px;font:inherit;font-size:16px;color:var(--fg)}
+.tester input[type=range]{width:120px;accent-color:var(--gold)}
+.seg{display:inline-flex;background:rgba(237,232,228,.06);border-radius:10px;padding:3px;gap:2px}
+.seg button{appearance:none;border:0;background:none;padding:7px 12px;border-radius:8px;font-size:13px;font-weight:600;color:var(--muted);cursor:pointer}
+.seg button[aria-pressed="true"]{background:rgba(237,232,228,.14);color:var(--fg)}
+.tester .out{min-height:300px;display:grid;place-items:center;padding:48px 28px;background:var(--obsidian);container-type:inline-size}
+.tt{font-family:var(--display);text-transform:uppercase;text-align:center;line-height:.86;font-size:var(--sz,96px);max-width:100%}
+.tt .ln{display:block;width:fit-content;margin:0 auto;white-space:nowrap;padding:.1em .16em .04em}
+.tt.blocks .ln{background:var(--ash);color:var(--obsidian)}
+.tt .y{color:var(--gold)}
+.tt.blocks .y{display:inline-block;background:var(--gold);color:var(--ink);padding:.1em 0 .04em;margin:-.1em 0 -.04em}
+.tt.blocks .y.s{margin-left:-.16em;padding-left:.16em}
+.tt.blocks .y.e{margin-right:-.16em;padding-right:.16em}
+.tt.plain .ln{color:var(--ash)}
+
+/* templates */
+.tpl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.tpl figure{margin:0;display:flex;flex-direction:column;gap:14px}
+.tpl img{border-radius:12px;box-shadow:0 30px 60px rgba(0,0,0,.4),inset 0 0 0 1px var(--line);width:100%;aspect-ratio:3/4;object-fit:cover}
+.tpl figcaption{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.do-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 28px}
+.do-list li{display:flex;gap:12px;align-items:flex-start;color:var(--muted)}
+.do-list li b{color:var(--fg);font-weight:600}
+.do-list li::before{content:"";flex:none;width:8px;height:8px;margin-top:9px;border-radius:2px;background:var(--gold)}
+.cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+
+/* motion */
+.player{border-radius:var(--r);overflow:hidden;box-shadow:inset 0 0 0 1px var(--line);background:#000}
+.player video{width:100%;aspect-ratio:16/9}
+
+/* textures */
+.tex .stage{aspect-ratio:16/10;overflow:hidden}
+.tex .stage img{width:100%;height:100%;object-fit:cover}
+
+/* kit table */
+.kit-list{border-radius:var(--r);overflow:hidden;box-shadow:inset 0 0 0 1px var(--line);background:var(--card)}
+.kit-row{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:20px;align-items:center;padding:18px 22px}
+.kit-row + .kit-row{border-top:1px solid var(--line)}
+.kit-row b{font-size:17px}
+.kit-row p{color:var(--muted);font-size:14px}
+.kit-row .size{font-family:var(--mono);font-size:13px;color:var(--muted);white-space:nowrap}
+.kit-row.hero-row{background:var(--obsidian);color:var(--ash)}
+.kit-row.hero-row p,.kit-row.hero-row .size{color:rgba(237,232,228,.62)}
+
+footer{margin-left:var(--rail);padding:48px max(32px,env(safe-area-inset-right)) calc(48px + env(safe-area-inset-bottom,0px)) 56px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.blk + .space,.blk + .kit-list{margin-top:56px}
+footer a{color:var(--fg)}
+
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ash);color:var(--obsidian);padding:10px 18px;border-radius:999px;font-weight:600;font-size:14px;z-index:200;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+
+/* ---------- phones + tablets ---------- */
+.topbar{display:none}
+@media (max-width:1023px){
+  .rail{display:none}
+  .rail.open{display:flex;inset:0;width:auto;border:0;z-index:60;padding-top:calc(76px + env(safe-area-inset-top,0px))}
+  .rail.open .brand{display:none}
+  .topbar{display:flex;position:sticky;top:0;z-index:70;align-items:center;justify-content:space-between;gap:12px;padding:calc(12px + env(safe-area-inset-top,0px)) 16px 12px;background:rgba(19,19,19,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .topbar .menu{appearance:none;border:0;background:rgba(237,232,228,.08);border-radius:999px;padding:9px 16px;font-weight:600;font-size:14px;cursor:pointer}
+  main,footer{margin-left:0}
+  section{padding:84px 20px}
+  .hero{padding-top:120px;min-height:auto;padding-bottom:64px}
+  .g3,.prim{grid-template-columns:minmax(0,1fr)}
+  .g2,.tpl{grid-template-columns:minmax(0,1fr)}
+  .g4,.weights,.avatars{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ext{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .neu{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .space,.spec,.foil{grid-template-columns:minmax(0,1fr)}
+  .do-list{grid-template-columns:minmax(0,1fr)}
+  .kit-row{grid-template-columns:minmax(0,1fr) auto;padding:16px}
+  .kit-row .size{grid-column:1;grid-row:2}
+  .kit-row .btn{grid-row:1/3;grid-column:2}
+  footer{padding:36px 20px calc(36px + env(safe-area-inset-bottom,0px))}
+  .sub-h{margin-top:56px}
+}
+@media (max-width:1023px){
+  .avatar .btn{width:100%;justify-content:center;white-space:normal;text-align:center;line-height:1.2}
+  .rail.open .nav a{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:min(44px,6vh);line-height:1;padding:6px 4px;color:var(--fg);align-items:center}
+  .rail.open .nav a i{font-size:12px;width:24px}
+}
+@media (min-width:640px) and (max-width:1023px){
+  .g2,.g3,.tpl{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .prim{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .avatars{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .space{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px}
+  .space-demo{padding:24px}
+  .cs{--x:min(18vw,150px)}
+}
+@media (pointer:coarse){.btn.sm{min-height:44px}.sw{min-height:40px}.seg button{min-height:40px}}
+@media (max-width:520px){
+  .spec{padding:24px}
+  .tester input[type=range]{width:100%}
+}
+@media (max-width:639px){
+  .prim .chip .fill{--ar:2/1}
+  .ext,.neu{grid-template-columns:minmax(0,1fr);gap:10px}
+  .ext .chip,.neu .chip{flex-direction:row}
+  .ext .chip .fill,.neu .chip .fill{aspect-ratio:auto;width:96px;flex:none;box-shadow:inset -1px 0 0 var(--line)}
+  .ext .info,.neu .info{flex:1;padding:12px 16px}
+}
+@media (prefers-reduced-motion:reduce){.hero video{display:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#logo">Skip to the brand book</a>
+
+<header class="topbar">
+  <a class="brand" href="#top"><img src="/assets/logo/symbol/TT_symbol_light.svg" alt=""><div><b>TTR Studio</b></div></a>
+  <button class="menu" id="menu" aria-expanded="false" aria-controls="rail">Menu</button>
+</header>
+
+<aside class="rail" id="rail">
+  <a class="brand" href="#top"><img src="/assets/logo/symbol/TT_symbol_light.svg" alt=""><div><b>TTR Studio</b><span>Brand book</span></div></a>
+  <nav aria-label="Chapters"><ul class="nav" id="nav">
+    <li><a href="#logo"><i>01</i>Logo</a></li>
+    <li><a href="#space"><i>02</i>Clear space</a></li>
+    <li><a href="#misuse"><i>03</i>Misuse</a></li>
+    <li><a href="#color"><i>04</i>Color</a></li>
+    <li><a href="#type"><i>05</i>Typography</a></li>
+    <li><a href="#templates"><i>06</i>Templates</a></li>
+    <li><a href="#motion"><i>07</i>Motion</a></li>
+    <li><a href="#texture"><i>08</i>Texture</a></li>
+    <li><a href="#kit"><i>09</i>Downloads</a></li>
+  </ul></nav>
+  <a class="btn full kit" href="/downloads/TTR-Brand-Kit.zip" download>Brand kit <small data-size="downloads/TTR-Brand-Kit.zip"></small></a>
+</aside>
+
+<main id="top">
+
+<!-- ================= HERO ================= -->
+<section class="hero" aria-label="TTR Studio">
+  <img class="poster" src="/assets/thumbs/reveal-poster.jpg" alt="">
+  <video muted playsinline preload="none" aria-hidden="true" poster="/assets/thumbs/reveal-poster.jpg" data-src="/assets/thumbs/hero.mp4"></video>
+  <div class="wrap">
+    <h1 class="blk"><span>Treasure</span><span>Trove</span><span class="g">Studio</span></h1>
+    <p class="lead">The Treasure Trove brand, ready to use. Logos, color, type, templates and texture, one click from your next design.</p>
+    <div class="hero-cta">
+      <a class="btn" href="/downloads/TTR-Brand-Kit.zip" download><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 2v9m0 0 3.5-3.5M8 11 4.5 7.5M2.5 14h11"/></svg>Download the brand kit <small data-size="downloads/TTR-Brand-Kit.zip"></small></a>
+    </div>
+    <div class="quick">
+      <a class="btn ghost sm" href="#logo">Logos</a>
+      <a class="btn ghost sm" href="#color">Colors</a>
+      <a class="btn ghost sm" href="#type">Fonts</a>
+      <a class="btn ghost sm" href="#templates">Templates</a>
+      <a class="btn ghost sm" href="#texture">Textures</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 01 LOGO ================= -->
+<section id="logo">
+  <div class="wrap">
+    <div class="eyebrow"><i>01</i> Logo</div>
+    <h2 class="blk"><span>The</span><span class="g">Mark</span></h2>
+    <p class="lead">A sword through a shield, set in a T. Three lockups, three colorways. Pick the lockup that fits the space.</p>
+
+    <div class="grid g2">
+      <article class="card logo-card" data-name="primary" style="grid-column:1/-1">
+        <div class="stage wide"><img alt="Treasure Trove primary logo" style="--w:64%"></div>
+        <div class="body">
+          <div class="row"><div><h3>Primary</h3><p class="muted">The default. Use it whenever there's room for the full name.</p></div><div class="swatches" role="group"></div></div>
+          <div class="dl"></div>
+        </div>
+      </article>
+      <article class="card logo-card" data-name="stacked">
+        <div class="stage sq"><img alt="Treasure Trove stacked logo" style="--w:66%"></div>
+        <div class="body">
+          <div><h3>Stacked</h3><p class="muted">For tall and square spaces where the primary gets too small.</p></div>
+          <div class="swatches" role="group"></div>
+          <div class="dl"></div>
+        </div>
+      </article>
+      <article class="card logo-card" data-name="symbol">
+        <div class="stage sq"><img alt="Treasure Trove symbol" style="--w:28%"></div>
+        <div class="body">
+          <div><h3>Symbol</h3><p class="muted">When the name is already known: avatars, favicons, watermarks.</p></div>
+          <div class="swatches" role="group"></div>
+          <div class="dl"></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="sub-h"><h3>Social avatars · 1080 × 1080 PNG</h3><a class="btn ghost sm" href="/downloads/TTR-Logos.zip" download>All logos + avatars <small data-size="downloads/TTR-Logos.zip"></small></a></div>
+    <div class="avatars">
+      <div class="avatar"><img src="/assets/avatars/ttr-avatar-obsidian.png" alt="Symbol in Ash on Obsidian" loading="lazy"><a class="btn ghost sm" href="/assets/avatars/ttr-avatar-obsidian.png" download>Obsidian<span class="sr"> avatar</span></a></div>
+      <div class="avatar"><img src="/assets/avatars/ttr-avatar-obsidian-gold.png" alt="Symbol in Golden Yellow on Obsidian" loading="lazy"><a class="btn ghost sm" href="/assets/avatars/ttr-avatar-obsidian-gold.png" download>Gold on Obsidian<span class="sr"> avatar</span></a></div>
+      <div class="avatar"><img src="/assets/avatars/ttr-avatar-golden.png" alt="Symbol in Obsidian on Golden Yellow" loading="lazy"><a class="btn ghost sm" href="/assets/avatars/ttr-avatar-golden.png" download>Golden<span class="sr"> avatar</span></a></div>
+      <div class="avatar"><img src="/assets/avatars/ttr-avatar-ash.png" alt="Symbol in Obsidian on Ash" loading="lazy"><a class="btn ghost sm" href="/assets/avatars/ttr-avatar-ash.png" download>Ash<span class="sr"> avatar</span></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 02 CLEAR SPACE ================= -->
+<section id="space" class="light">
+  <div class="wrap">
+    <div class="eyebrow"><i>02</i> Clear space</div>
+    <h2 class="blk"><span>Room to</span><span class="g">Breathe</span></h2>
+    <div class="space">
+      <div class="space-demo">
+        <div class="cs"><img src="/assets/logo/symbol/TT_symbol_light.svg" alt="Symbol with its clear space marked"><span class="x t">½X</span><span class="x r">½X</span><span class="x b">½X</span><span class="x l">½X</span><div class="xw">X</div></div>
+      </div>
+      <div class="rules">
+        <div class="rule"><b>Keep ½X on every side</b><p>X is the full width of the symbol. Keep that half-width clear around every lockup. No type, images, or edges inside it.</p></div>
+        <div class="rule"><b>Symbol: 24px minimum</b><p>Smaller than that, the sword and shield blur together. Favicons are the one exception.</p></div>
+        <div class="rule"><b>Clean, solid backgrounds</b><p>Obsidian, Ash, Golden Yellow or a brand neutral. If the background is busy, the mark loses.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 03 MISUSE ================= -->
+<section id="misuse">
+  <div class="wrap">
+    <div class="eyebrow"><i>03</i> Misuse</div>
+    <h2 class="blk"><span>Hands</span><span class="g">Off</span></h2>
+    <p class="lead">The mark was built with precision. Use the files exactly as delivered.</p>
+    <div class="grid g3">
+      <article class="card dont"><div class="stage"><span class="tag" aria-hidden="true">✕</span><img src="/assets/logo/primary/TT_logo_light.svg" alt="" style="transform:scaleX(1.45) scaleY(.8)"></div><div class="body"><h3>Don't distort</h3><p class="muted">Never stretch, squash or change its proportions.</p></div></article>
+      <article class="card dont"><div class="stage"><span class="tag" aria-hidden="true">✕</span><img src="/assets/logo/primary/TT_logo_light.svg" alt="" style="filter:drop-shadow(0 0 14px #FC5400) drop-shadow(6px 8px 0 #8A55F8)"></div><div class="body"><h3>Don't add effects</h3><p class="muted">No shadows, glows, outlines or gradients.</p></div></article>
+      <article class="card dont"><div class="stage"><span class="tag" aria-hidden="true">✕</span><img src="/assets/logo/primary/TT_logo_yellow.svg" alt="" style="filter:hue-rotate(150deg) saturate(1.6)"></div><div class="body"><h3>Don't recolor</h3><p class="muted">Light, dark and Golden Yellow only.</p></div></article>
+      <article class="card dont"><div class="stage" style="background:repeating-linear-gradient(45deg,#2a2a2a 0 12px,#3a3a3a 12px 24px)"><span class="tag" aria-hidden="true">✕</span><img src="/assets/logo/primary/TT_logo_light.svg" alt=""></div><div class="body"><h3>Don't place on patterns</h3><p class="muted">Always a clean, solid background.</p></div></article>
+      <article class="card dont"><div class="stage"><span class="tag" aria-hidden="true">✕</span><span style="font:800 34px/1 Arial,sans-serif;letter-spacing:.02em;color:var(--ash)">TREASURE TROVE</span></div><div class="body"><h3>Don't retype the name</h3><p class="muted">Never set the name in a font. Use the files.</p></div></article>
+      <article class="card dont"><div class="stage" style="background:#d9d4cf url(/assets/thumbs/paper.jpg) center/cover;background-blend-mode:multiply"><span class="tag" aria-hidden="true">✕</span><img src="/assets/logo/primary/TT_logo_light.svg" alt=""></div><div class="body"><h3>Don't lose contrast</h3><p class="muted">Light logo on light ground disappears. Switch to dark.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 04 COLOR ================= -->
+<section id="color" class="light">
+  <div class="wrap">
+    <div class="eyebrow"><i>04</i> Color</div>
+    <h2 class="blk"><span>Color</span><span class="g">With intent</span></h2>
+    <p class="lead">Obsidian, Ash and Golden Yellow carry the brand. The extended colors support, they never lead. Tap any value to copy it.</p>
+    <div class="chips prim" id="c-primary"></div>
+    <div class="sub-h"><h3>Extended</h3></div>
+    <div class="chips ext" id="c-extended"></div>
+    <div class="sub-h"><h3>Neutrals</h3></div>
+    <div class="chips neu" id="c-neutrals"></div>
+    <div class="sub-h"><h3>Gold Foil</h3></div>
+    <div class="foil">
+      <div class="fill" role="img" aria-label="Gold Foil gradient"></div>
+      <div class="info">
+        <p>For special moments: drops, records, milestones. Never as a background for long copy.</p>
+        <div class="vals" id="foil-vals"></div>
+        <div class="dl"><a class="btn ghost sm" href="/assets/color/ttr-gold-foil.png" download>Gradient · PNG</a></div>
+      </div>
+    </div>
+    <div class="sub-h"><h3>Color files</h3></div>
+    <div class="dl">
+      <a class="btn sm" href="/downloads/TTR-Colors.zip" download>All color files <small data-size="downloads/TTR-Colors.zip"></small></a>
+      <a class="btn ghost sm" href="/assets/color/ttr-colors.ase" download>Adobe swatches · ASE</a>
+      <a class="btn ghost sm" href="/assets/color/ttr-colors.css" download>CSS variables</a>
+      <a class="btn ghost sm" href="/assets/color/ttr-colors.json" download>JSON</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 05 TYPE ================= -->
+<section id="type">
+  <div class="wrap">
+    <div class="eyebrow"><i>05</i> Typography</div>
+    <h2 class="blk"><span>Loud</span><span class="g">And clear</span></h2>
+    <p class="lead">Trove shouts, Archivo explains. Anton stands in when Trove can't.</p>
+
+    <div class="spec">
+      <div><div class="glyph">Trove</div></div>
+      <div class="meta">
+        <span class="tag2">Headlines · Display</span>
+        <h3 style="font-size:28px">Trove Super Condensed</h3>
+        <p class="muted">Our typeface. Uppercase only, one weight, set tight. Never stretch, outline or fake it bold.</p>
+        <div class="abc">ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789 $%&amp;!?</div>
+        <div class="dl"><a class="btn sm" href="/assets/fonts/Trove-SuperCondensed.otf" download>Trove · OTF <small data-size="assets/fonts/Trove-SuperCondensed.otf"></small></a><a class="btn ghost sm" href="/assets/fonts/Trove-SuperCondensed.woff2" download>Web · WOFF2</a><a class="btn ghost sm" href="/assets/fonts/Druk-CondSuper.otf" download>Druk · OTF · Licensed <small data-size="assets/fonts/Druk-CondSuper.otf"></small></a></div>
+      </div>
+    </div>
+
+    <div class="sub-h"><h3>Type tester</h3><span class="muted" style="font-size:14px">Put *stars* around a word to make it gold.</span></div>
+    <div class="tester">
+      <div class="bar">
+        <label class="sr" for="tt-in">Headline</label>
+        <input type="text" id="tt-in" value="The card that *reset* the market" maxlength="90" autocomplete="off">
+        <div class="seg" role="group" aria-label="Style"><button type="button" data-style="blocks" aria-pressed="true">Blocks</button><button type="button" data-style="plain" aria-pressed="false">Plain</button></div>
+        <input type="range" id="tt-size" min="40" max="160" value="104" aria-label="Size">
+      </div>
+      <div class="out"><div class="tt blocks" id="tt-out"></div></div>
+    </div>
+
+    <div class="sub-h"><h3>Body · Archivo</h3><a class="btn ghost sm" href="https://fonts.google.com/specimen/Archivo" target="_blank" rel="noopener">Google Fonts ↗</a></div>
+    <div class="weights">
+      <div class="card"><div class="body"><div class="w" style="font-weight:400">Aa</div><b>Regular 400</b><p class="muted">Body copy and paragraphs</p></div></div>
+      <div class="card"><div class="body"><div class="w" style="font-weight:500">Aa</div><b>Medium 500</b><p class="muted">UI labels and captions</p></div></div>
+      <div class="card"><div class="body"><div class="w" style="font-weight:600">Aa</div><b>SemiBold 600</b><p class="muted">Emphasis and highlights</p></div></div>
+      <div class="card"><div class="body"><div class="w" style="font-weight:700">Aa</div><b>Bold 700</b><p class="muted">Subheads and titles</p></div></div>
+    </div>
+
+    <div class="sub-h"><h3>Fallback · Anton</h3><a class="btn ghost sm" href="https://fonts.google.com/specimen/Anton" target="_blank" rel="noopener">Google Fonts ↗</a></div>
+    <div class="card"><div class="body" style="flex-direction:row;align-items:center;gap:28px;flex-wrap:wrap"><div style="font-family:Anton,sans-serif;font-size:64px;line-height:1;text-transform:uppercase">Anton</div><p class="muted" style="max-width:48ch">Free and everywhere. Use it in Google Slides, Docs and anywhere Trove can't be installed.</p></div></div>
+
+    <div class="cta-row"><a class="btn" href="/downloads/TTR-Fonts.zip" download>All fonts <small data-size="downloads/TTR-Fonts.zip"></small></a></div>
+  </div>
+</section>
+
+<!-- ================= 06 TEMPLATES ================= -->
+<section id="templates">
+  <div class="wrap">
+    <div class="eyebrow"><i>06</i> Templates</div>
+    <h2 class="blk"><span>Built for</span><span class="g">The feed</span></h2>
+    <p class="lead">The Instagram system, at 1080 × 1440. Start from these and the post already looks like us.</p>
+    <div class="tpl">
+      <figure>
+        <img src="/assets/thumbs/cover.jpg" alt="Cover template: stacked Trove headline on Obsidian" loading="lazy">
+        <figcaption><div><h3>Cover</h3><p class="muted">Big Trove headline, one gold phrase, mark at the bottom.</p></div><div class="dl"><a class="btn sm" href="/assets/templates/ttr-post-cover-blank.png" download>Blank · PNG<span class="sr">, cover template</span> <small data-size="assets/templates/ttr-post-cover-blank.png"></small></a><a class="btn ghost sm" href="/assets/templates/ttr-post-cover-example.png" download>Example<span class="sr">, cover</span></a></div></figcaption>
+      </figure>
+      <figure>
+        <img src="/assets/thumbs/inner.jpg" alt="Inside slide template: gold headline blocks on a grid" loading="lazy">
+        <figcaption><div><h3>Inside slide</h3><p class="muted">Headline on gold blocks over the grid, caption at the bottom.</p></div><div class="dl"><a class="btn sm" href="/assets/templates/ttr-post-inner-blank.png" download>Blank · PNG<span class="sr">, inside slide template</span> <small data-size="assets/templates/ttr-post-inner-blank.png"></small></a><a class="btn ghost sm" href="/assets/templates/ttr-post-inner-example.png" download>Example<span class="sr">, inside slide</span></a></div></figcaption>
+      </figure>
+    </div>
+    <div class="sub-h"><h3>The rules</h3></div>
+    <ul class="do-list">
+      <li><span><b>Cover headlines in Trove,</b> uppercase, big and tight.</span></li>
+      <li><span><b>Gold for one thing:</b> the number, the name, the record.</span></li>
+      <li><span><b>Inside slides</b> put the headline on gold blocks over the grid.</span></li>
+      <li><span><b>Details in Archivo,</b> uppercase and small, near the bottom.</span></li>
+      <li><span><b>The mark sits bottom center,</b> small and quiet.</span></li>
+      <li><span><b>Obsidian ground with grain.</b> Never flat black.</span></li>
+      <li><span><b>3:4 for posts,</b> 9:16 for reel covers. Keep text in the middle 3:4.</span></li>
+    </ul>
+    <div class="cta-row">
+      <a class="btn" href="/downloads/TTR-Templates.zip" download>Templates <small data-size="downloads/TTR-Templates.zip"></small></a>
+      <a class="btn ghost" href="https://ttrsocial.vercel.app" target="_blank" rel="noopener">Write a social brief ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 07 MOTION ================= -->
+<section id="motion" class="light">
+  <div class="wrap">
+    <div class="eyebrow"><i>07</i> Motion</div>
+    <h2 class="blk"><span>The</span><span class="g">Reveal</span></h2>
+    <p class="lead">Five seconds of sword and shield. Use it to open and close videos.</p>
+    <div class="player"><video controls preload="none" poster="/assets/thumbs/reveal-poster.jpg"><source src="/assets/video/ttr-logo-reveal.mp4" type="video/mp4"></video></div>
+    <div class="cta-row"><a class="btn" href="/assets/video/ttr-logo-reveal.mp4" download>Logo reveal · MP4 <small data-size="assets/video/ttr-logo-reveal.mp4"></small></a><span class="muted" style="align-self:center;font-size:14px">1920 × 1080 · 5s</span></div>
+  </div>
+</section>
+
+<!-- ================= 08 TEXTURE ================= -->
+<section id="texture">
+  <div class="wrap">
+    <div class="eyebrow"><i>08</i> Texture</div>
+    <h2 class="blk"><span>Grit</span><span class="g">Not gloss</span></h2>
+    <p class="lead">Grain makes it feel collected, not printed. Layer these over your designs.</p>
+    <div class="grid g2 tex">
+      <article class="card"><div class="stage"><img src="/assets/thumbs/film.jpg" alt="Film scratches texture" loading="lazy"></div><div class="body"><div><h3>Film scratches</h3><p class="muted">3000 × 3000. For dark designs: set to Screen and lower the opacity until it feels worn.</p></div><div class="dl"><a class="btn ghost sm" href="/assets/textures/ttr-film-scratches.png" download>PNG<span class="sr">, film scratches</span> <small data-size="assets/textures/ttr-film-scratches.png"></small></a></div></div></article>
+      <article class="card"><div class="stage"><img src="/assets/thumbs/paper.jpg" alt="Paper grain texture" loading="lazy"></div><div class="body"><div><h3>Paper grain</h3><p class="muted">2000 × 2500. For light designs: set to Multiply for a tactile, paper feel.</p></div><div class="dl"><a class="btn ghost sm" href="/assets/textures/ttr-paper-grain.png" download>PNG<span class="sr">, paper grain</span> <small data-size="assets/textures/ttr-paper-grain.png"></small></a></div></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 09 KIT ================= -->
+<section id="kit" class="light">
+  <div class="wrap">
+    <div class="eyebrow"><i>09</i> Downloads</div>
+    <h2 class="blk"><span>Take</span><span class="g">It all</span></h2>
+    <div class="kit-list">
+      <div class="kit-row hero-row"><div><b>Brand kit</b><p>Everything on this page in one folder.</p></div><span class="size" data-size="downloads/TTR-Brand-Kit.zip"></span><a class="btn sm" href="/downloads/TTR-Brand-Kit.zip" download>Download<span class="sr"> Brand kit</span></a></div>
+      <div class="kit-row"><div><b>Logos</b><p>Primary, stacked and symbol in light, dark and gold. SVG + PNG, plus social avatars.</p></div><span class="size" data-size="downloads/TTR-Logos.zip"></span><a class="btn ghost sm" href="/downloads/TTR-Logos.zip" download>Download<span class="sr"> Logos</span></a></div>
+      <div class="kit-row"><div><b>Fonts</b><p>Trove Super Condensed (OTF + web) and Druk Condensed Super.</p></div><span class="size" data-size="downloads/TTR-Fonts.zip"></span><a class="btn ghost sm" href="/downloads/TTR-Fonts.zip" download>Download<span class="sr"> Fonts</span></a></div>
+      <div class="kit-row"><div><b>Colors</b><p>Adobe swatches, CSS variables, JSON and the Gold Foil gradient.</p></div><span class="size" data-size="downloads/TTR-Colors.zip"></span><a class="btn ghost sm" href="/downloads/TTR-Colors.zip" download>Download<span class="sr"> Colors</span></a></div>
+      <div class="kit-row"><div><b>Templates</b><p>Instagram cover and inside slide, blank and example. 1080 × 1440.</p></div><span class="size" data-size="downloads/TTR-Templates.zip"></span><a class="btn ghost sm" href="/downloads/TTR-Templates.zip" download>Download<span class="sr"> Templates</span></a></div>
+      <div class="kit-row"><div><b>Textures</b><p>Film scratches and paper grain. High resolution PNG.</p></div><span class="size" data-size="downloads/TTR-Textures.zip"></span><a class="btn ghost sm" href="/downloads/TTR-Textures.zip" download>Download<span class="sr"> Textures</span></a></div>
+      <div class="kit-row"><div><b>Logo reveal</b><p>The intro animation. MP4, 1920 × 1080.</p></div><span class="size" data-size="assets/video/ttr-logo-reveal.mp4"></span><a class="btn ghost sm" href="/assets/video/ttr-logo-reveal.mp4" download>Download<span class="sr"> Logo reveal</span></a></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+  <span>Treasure Trove · TTR Studio · Updated October 2026</span>
+  <span>Briefing a post? <a href="https://ttrsocial.vercel.app" target="_blank" rel="noopener">Social Content Design Brief ↗</a></span>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script>
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&apos;"}[c]));
+let tt; function toast(m){ const t=$("#toast"); t.textContent=m; t.hidden=false; clearTimeout(tt); tt=setTimeout(()=>t.hidden=true,1800); }
+
+/* file sizes, written by build.py */
+const mb=b=>b>=1e6?`${(b/1e6).toFixed(b>=1e7?0:1)} MB`:`${Math.max(1,Math.round(b/1e3))} KB`;
+fetch("/sizes.json").then(r=>r.json()).then(sz=>$$("[data-size]").forEach(el=>{ const k=el.dataset.size; if(sz[k]) el.textContent=mb(sz[k]); })).catch(()=>{});
+
+/* ---------- logos ---------- */
+const LOGO={
+  primary:{light:"primary/TT_logo_light",dark:"primary/TT_logo_dark",yellow:"primary/TT_logo_yellow"},
+  stacked:{light:"stacked/TT_logo_light_secondary",dark:"stacked/TT_logo_dark_secondary",yellow:"stacked/TT_logo_yellow_secondary"},
+  symbol:{light:"symbol/TT_symbol_light",dark:"symbol/TT_symbol_dark",yellow:"symbol/TT_symbol_yellow"},
+};
+const WAYS=[["light","Light","#EDE8E4","obsidian"],["dark","Dark","#131313","ash"],["yellow","Gold","#FCCF00","obsidian"]];
+const WAYNOTE={light:"For Obsidian and dark grounds",dark:"For Ash and light grounds",yellow:"Reserved. Dark grounds only, with intention"};
+const svgCache=new Map();
+$$(".logo-card").forEach(card=>{
+  const name=card.dataset.name, img=card.querySelector(".stage img"), stage=card.querySelector(".stage");
+  const sw=card.querySelector(".swatches"), dl=card.querySelector(".dl");
+  sw.setAttribute("aria-label",`${name[0].toUpperCase()+name.slice(1)} colorway`);
+  sw.innerHTML=WAYS.map(([k,l,c])=>`<button type="button" class="sw" data-way="${k}" style="--c:${c}" aria-pressed="false" title="${WAYNOTE[k]}">${l}</button>`).join("");
+  const set=way=>{
+    const base="/assets/logo/"+LOGO[name][way];
+    img.src=base+".svg"; stage.dataset.bg=WAYS.find(w=>w[0]===way)[3];
+    sw.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.way===way));
+    const lab=WAYS.find(w=>w[0]===way)[1], file=`TTR-${name}-${lab.toLowerCase()}`;
+    img.alt=`Treasure Trove ${name} logo, ${lab}`;
+    if(!svgCache.has(base)) svgCache.set(base,fetch(base+".svg").then(r=>r.text()).catch(()=>""));
+    dl.innerHTML=`<a class="btn sm" href="${base}.svg" download="${file}.svg">SVG<span class="sr">, ${name} logo</span></a><a class="btn ghost sm" href="${base}.png" download="${file}.png">PNG<span class="sr">, ${name} logo</span></a><button type="button" class="btn ghost sm" data-copysvg>Copy SVG</button><span class="muted" style="font-size:13px;align-self:center">${WAYNOTE[way]}</span>`;
+    // the SVG text is fetched ahead so the clipboard write stays inside the click (Safari)
+    let text=""; svgCache.get(base).then(t=>text=t);
+    dl.querySelector("[data-copysvg]").onclick=async()=>{ try{ if(!text) throw 0; await navigator.clipboard.writeText(text); toast("SVG copied. Paste it into Figma."); }catch(_){ toast("Copy didn't work here. Download the SVG instead."); } };
+  };
+  sw.addEventListener("click",e=>{ const b=e.target.closest("[data-way]"); if(b) set(b.dataset.way); });
+  set("light");
+});
+
+/* ---------- color ---------- */
+const PAL={
+  primary:[["Obsidian","#131313","C0 M0 Y0 K93"],["Ash","#EDE8E4","C0 M2 Y4 K7"],["Golden Yellow","#FCCF00","C0 M18 Y100 K1"]],
+  extended:[["Navy","#001F47"],["Bronze","#642D00"],["Forest","#2A6400"],["Violet","#8A55F8"],["Blaze","#FC5400"],["Emerald","#BCE0A2"]],
+  neutrals:[["Cloud","#FFFCF9"],["Pearl","#FCF6EF"],["Egg Shell","#F0E9E3"],["Graphite","#40424D"],["Arsenic","#1E1E24"]],
+};
+const rgbOf=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16));
+const lum=h=>{ const [r,g,b]=rgbOf(h).map(v=>v/255); return .2126*r+.7152*g+.0722*b; };
+const val=(lab,v)=>`<button type="button" class="val" data-copy="${esc(v)}" aria-label="Copy ${esc(lab)} ${esc(v)}"><span>${lab}</span>${esc(v)}</button>`;
+function chip([n,h,cm]){ const lt=lum(h)>.6; return `<div class="chip"><div class="fill${lt?" lt":""}" style="--c:${h};color:${lt?"#131313":"#EDE8E4"}"><span class="aa" aria-hidden="true">Aa</span></div><div class="info"><b>${n}</b><div class="vals">${val("HEX",h)}${val("RGB",rgbOf(h).join(" "))}${cm?val("CMYK",cm):""}</div></div></div>`; }
+$("#c-primary").innerHTML=PAL.primary.map(chip).join("");
+$("#c-extended").innerHTML=PAL.extended.map(chip).join("");
+$("#c-neutrals").innerHTML=PAL.neutrals.map(chip).join("");
+$("#foil-vals").innerHTML=[["0%","#F0D39D"],["30%","#FDEED2"],["65%","#DBC29B"],["100%","#A88043"]].map(([p,h])=>val(p,h)).join("")+val("CSS","linear-gradient(135deg, #F0D39D 0%, #FDEED2 30%, #DBC29B 65%, #A88043 100%)");
+document.addEventListener("click",async e=>{
+  const b=e.target.closest("[data-copy]"); if(!b) return;
+  try{ await navigator.clipboard.writeText(b.dataset.copy); toast(`Copied ${b.dataset.copy.length>24?"gradient CSS":b.dataset.copy}`); }
+  catch(_){ toast("Copy didn't work here. Select the value instead."); }
+});
+
+/* ---------- type tester: same stacked-block logic as the social brief ---------- */
+function render(){
+  const out=$("#tt-out"), raw=$("#tt-in").value||"Treasure Trove";
+  const v=+$("#tt-size").value; out.style.setProperty("--sz",`clamp(${v*.5}px, ${v/1440*100}cqw, ${v}px)`);
+  out.innerHTML=`<span class="wk">${esc(raw).replace(/\*([^*]+)\*/g,'<span class="y">$1</span>')}</span>`;
+  // measure words, then rebuild one block per line
+  const wk=out.querySelector(".wk"), words=[]; let glue=false;
+  const walk=(node,gold)=>node.childNodes.forEach(n=>{
+    if(n.nodeType===3) n.textContent.split(/(\s+)/).forEach(t=>{ if(!t) return; if(/^\s/.test(t)){ glue=false; return; } words.push({t,gold,glue}); glue=true; });
+    else walk(n,gold||n.classList?.contains("y"));
+  });
+  walk(wk,false);
+  wk.style.cssText="display:block;padding:0 .16em";
+  wk.innerHTML=words.map(w=>`${w.glue?"":" "}<span class="w${w.gold?" y":""}${w.glue?" g":""}">${esc(w.t)}</span>`).join("");
+  const lines=[]; let top=null;
+  wk.querySelectorAll(".w").forEach(sp=>{ if(top===null||Math.abs(sp.offsetTop-top)>3){ lines.push([]); top=sp.offsetTop; } lines.at(-1).push({t:sp.textContent,gold:sp.classList.contains("y"),glue:sp.classList.contains("g")}); });
+  const line=l=>{ let o=""; for(let i=0;i<l.length;){ const g=l[i].gold; let s="",j=i; while(j<l.length&&l[j].gold===g){ s+=(j>i&&!l[j].glue?" ":"")+l[j].t; j++; } o+=(i&&!l[i].glue?" ":"")+(g?`<span class="y${i?"":" s"}${j===l.length?" e":""}">${esc(s)}</span>`:esc(s)); i=j; } return o; };
+  out.innerHTML=lines.map(l=>`<span class="ln">${line(l)}</span>`).join("");
+}
+$("#tt-in").addEventListener("input",render);
+$("#tt-size").addEventListener("input",render);
+$$("[data-style]").forEach(b=>b.onclick=()=>{ $$("[data-style]").forEach(x=>x.setAttribute("aria-pressed",x===b)); $("#tt-out").className="tt "+b.dataset.style; render(); });
+addEventListener("resize",()=>{ clearTimeout(render.t); render.t=setTimeout(render,120); });
+(document.fonts?.load('40px "Trove"')||Promise.resolve()).then(render,render);
+
+/* ---------- nav: active chapter + phone menu ---------- */
+const links=$$("#nav a");
+const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting) links.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id)); }),{rootMargin:"-45% 0px -50% 0px"});
+$$("main section[id]").forEach(s=>io.observe(s));
+const rail=$("#rail"), menu=$("#menu");
+const phone=matchMedia("(max-width:1023px)");
+function setMenu(open){
+  rail.classList.toggle("open",open); menu.setAttribute("aria-expanded",open); menu.textContent=open?"Close":"Menu";
+  document.documentElement.style.overflow=open?"hidden":"";
+  $("main").inert=open; $("footer").inert=open;
+  if(open) rail.querySelector("#nav a").focus();
+}
+menu.onclick=()=>setMenu(!rail.classList.contains("open"));
+rail.addEventListener("click",e=>{ if(e.target.closest("a")&&rail.classList.contains("open")) setMenu(false); });
+addEventListener("keydown",e=>{ if(e.key==="Escape"&&rail.classList.contains("open")){ setMenu(false); menu.focus(); } });
+phone.addEventListener("change",()=>setMenu(false));
+$(".topbar .brand").addEventListener("click",()=>{ if(rail.classList.contains("open")) setMenu(false); });
+
+/* hero video: pause when off screen */
+/* hero: a light 720p cut of the reveal plays once (and again when you scroll back up); skipped for reduced motion and data saver */
+const hv=$(".hero video"), calm=matchMedia("(prefers-reduced-motion: reduce)").matches||navigator.connection?.saveData;
+if(hv&&!calm){ hv.src=hv.dataset.src; new IntersectionObserver(([e])=>{ e.isIntersecting?hv.play().catch(()=>{}):hv.pause(); }).observe(hv); }
+</script>
+</body>
+</html>
